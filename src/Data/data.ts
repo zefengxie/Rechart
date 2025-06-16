@@ -240,140 +240,140 @@ export const composedData = [
     "make": "Toyota"
   },
   {
-    "date": "2025-05-32",
+    "date": "2025-06-01",
     "impressions": 44780,
     "clicks": 63,
     "value": 69,
     "make": "BMW"
   },
   {
-    "date": "2025-05-33",
+    "date": "2025-06-02",
     "impressions": 24173,
     "clicks": 45,
     "value": 68,
     "make": "Honda"
   },
   {
-    "date": "2025-05-34",
+    "date": "2025-06-03",
     "impressions": 32945,
     "clicks": 50,
     "value": 67,
     "make": "Mazda"
   },
   {
-    "date": "2025-05-35",
+    "date": "2025-06-04",
     "impressions": 25951,
     "clicks": 63,
     "value": 66,
     "make": "Ford"
   },
   {
-    "date": "2025-05-36",
+    "date": "2025-06-05",
     "impressions": 20812,
     "clicks": 57,
     "value": 65,
     "make": "Hyundai"
   },
   {
-    "date": "2025-05-37",
+    "date": "2025-06-06",
     "impressions": 27198,
     "clicks": 54,
     "value": 64,
     "make": "Kia"
   },
   {
-    "date": "2025-05-38",
+    "date": "2025-06-07",
     "impressions": 33195,
     "clicks": 42,
     "value": 63,
     "make": "Nissan"
   },
   {
-    "date": "2025-05-39",
+    "date": "2025-06-08",
     "impressions": 37607,
     "clicks": 46,
     "value": 62,
     "make": "Volkswagen"
   },
   {
-    "date": "2025-05-40",
+    "date": "2025-06-09",
     "impressions": 44278,
     "clicks": 51,
     "value": 61,
     "make": "Subaru"
   },
   {
-    "date": "2025-05-41",
+    "date": "2025-06-10",
     "impressions": 21171,
     "clicks": 65,
     "value": 60,
     "make": "Toyota"
   },
   {
-    "date": "2025-05-42",
+    "date": "2025-06-11",
     "impressions": 43872,
     "clicks": 68,
     "value": 59,
     "make": "BMW"
   },
   {
-    "date": "2025-05-43",
+    "date": "2025-06-12",
     "impressions": 31368,
     "clicks": 65,
     "value": 58,
     "make": "Honda"
   },
   {
-    "date": "2025-05-44",
+    "date": "2025-06-13",
     "impressions": 29468,
     "clicks": 48,
     "value": 57,
     "make": "Mazda"
   },
   {
-    "date": "2025-05-45",
+    "date": "2025-06-14",
     "impressions": 34772,
     "clicks": 40,
     "value": 56,
     "make": "Ford"
   },
   {
-    "date": "2025-05-46",
+    "date": "2025-06-15",
     "impressions": 44479,
     "clicks": 69,
     "value": 55,
     "make": "Hyundai"
   },
   {
-    "date": "2025-05-47",
+    "date": "2025-06-16",
     "impressions": 42856,
     "clicks": 56,
     "value": 54,
     "make": "Kia"
   },
   {
-    "date": "2025-05-48",
+    "date": "2025-06-17",
     "impressions": 26181,
     "clicks": 50,
     "value": 53,
     "make": "Nissan"
   },
   {
-    "date": "2025-05-49",
+    "date": "2025-06-18",
     "impressions": 41216,
     "clicks": 44,
     "value": 52,
     "make": "Volkswagen"
   },
   {
-    "date": "2025-05-50",
+    "date": "2025-06-19",
     "impressions": 33232,
     "clicks": 68,
     "value": 51,
     "make": "Subaru"
   }
 ];
-export const pieDataRaw = [{"date": "2025-04-11", "name": "New", "value": 30}, {"date": "2025-04-11", "name": "Used", "value": 70}, {"date": "2025-04-12", "name": "New", "value": 31}, {"date": "2025-04-12", "name": "Used", "value": 69}, {"date": "2025-04-13", "name": "New", "value": 32}, {"date": "2025-04-13", "name": "Used", "value": 68}, {"date": "2025-04-14", "name": "New", "value": 33}, {"date": "2025-04-14", "name": "Used", "value": 67}, {"date": "2025-04-15", "name": "New", "value": 34}, {"date": "2025-04-15", "name": "Used", "value": 66}, {"date": "2025-04-16", "name": "New", "value": 35}, {"date": "2025-04-16", "name": "Used", "value": 65}, {"date": "2025-04-17", "name": "New", "value": 36}, {"date": "2025-04-17", "name": "Used", "value": 64}, {"date": "2025-04-18", "name": "New", "value": 37}, {"date": "2025-04-18", "name": "Used", "value": 63}, {"date": "2025-04-19", "name": "New", "value": 38}, {"date": "2025-04-19", "name": "Used", "value": 62}, {"date": "2025-04-20", "name": "New", "value": 39}, {"date": "2025-04-20", "name": "Used", "value": 61}, {"date": "2025-04-21", "name": "New", "value": 30}, {"date": "2025-04-21", "name": "Used", "value": 70}, {"date": "2025-04-22", "name": "New", "value": 31}, {"date": "2025-04-22", "name": "Used", "value": 69}, {"date": "2025-04-23", "name": "New", "value": 32}, {"date": "2025-04-23", "name": "Used", "value": 68}, {"date": "2025-04-24", "name": "New", "value": 33}, {"date": "2025-04-24", "name": "Used", "value": 67}, {"date": "2025-04-25", "name": "New", "value": 34}, {"date": "2025-04-25", "name": "Used", "value": 66}, {"date": "2025-04-26", "name": "New", "value": 35}, {"date": "2025-04-26", "name": "Used", "value": 65}, {"date": "2025-04-27", "name": "New", "value": 36}, {"date": "2025-04-27", "name": "Used", "value": 64}, {"date": "2025-04-28", "name": "New", "value": 37}, {"date": "2025-04-28", "name": "Used", "value": 63}, {"date": "2025-04-29", "name": "New", "value": 38}, {"date": "2025-04-29", "name": "Used", "value": 62}, {"date": "2025-04-30", "name": "New", "value": 39}, {"date": "2025-04-30", "name": "Used", "value": 61}, {"date": "2025-05-01", "name": "New", "value": 30}, {"date": "2025-05-01", "name": "Used", "value": 70}, {"date": "2025-05-02", "name": "New", "value": 31}, {"date": "2025-05-02", "name": "Used", "value": 69}, {"date": "2025-05-03", "name": "New", "value": 32}, {"date": "2025-05-03", "name": "Used", "value": 68}, {"date": "2025-05-04", "name": "New", "value": 33}, {"date": "2025-05-04", "name": "Used", "value": 67}, {"date": "2025-05-05", "name": "New", "value": 34}, {"date": "2025-05-05", "name": "Used", "value": 66}, {"date": "2025-05-06", "name": "New", "value": 35}, {"date": "2025-05-06", "name": "Used", "value": 65}, {"date": "2025-05-07", "name": "New", "value": 36}, {"date": "2025-05-07", "name": "Used", "value": 64}, {"date": "2025-05-08", "name": "New", "value": 37}, {"date": "2025-05-08", "name": "Used", "value": 63}, {"date": "2025-05-09", "name": "New", "value": 38}, {"date": "2025-05-09", "name": "Used", "value": 62}, {"date": "2025-05-10", "name": "New", "value": 39}, {"date": "2025-05-10", "name": "Used", "value": 61}, {"date": "2025-05-11", "name": "New", "value": 30}, {"date": "2025-05-11", "name": "Used", "value": 70}, {"date": "2025-05-12", "name": "New", "value": 31}, {"date": "2025-05-12", "name": "Used", "value": 69}, {"date": "2025-05-13", "name": "New", "value": 32}, {"date": "2025-05-13", "name": "Used", "value": 68}, {"date": "2025-05-14", "name": "New", "value": 33}, {"date": "2025-05-14", "name": "Used", "value": 67}, {"date": "2025-05-15", "name": "New", "value": 34}, {"date": "2025-05-15", "name": "Used", "value": 66}, {"date": "2025-05-16", "name": "New", "value": 35}, {"date": "2025-05-16", "name": "Used", "value": 65}, {"date": "2025-05-17", "name": "New", "value": 36}, {"date": "2025-05-17", "name": "Used", "value": 64}, {"date": "2025-05-18", "name": "New", "value": 37}, {"date": "2025-05-18", "name": "Used", "value": 63}, {"date": "2025-05-19", "name": "New", "value": 38}, {"date": "2025-05-19", "name": "Used", "value": 62}, {"date": "2025-05-20", "name": "New", "value": 39}, {"date": "2025-05-20", "name": "Used", "value": 61}, {"date": "2025-05-21", "name": "New", "value": 30}, {"date": "2025-05-21", "name": "Used", "value": 70}, {"date": "2025-05-22", "name": "New", "value": 31}, {"date": "2025-05-22", "name": "Used", "value": 69}, {"date": "2025-05-23", "name": "New", "value": 32}, {"date": "2025-05-23", "name": "Used", "value": 68}, {"date": "2025-05-24", "name": "New", "value": 33}, {"date": "2025-05-24", "name": "Used", "value": 67}, {"date": "2025-05-25", "name": "New", "value": 34}, {"date": "2025-05-25", "name": "Used", "value": 66}, {"date": "2025-05-26", "name": "New", "value": 35}, {"date": "2025-05-26", "name": "Used", "value": 65}, {"date": "2025-05-27", "name": "New", "value": 36}, {"date": "2025-05-27", "name": "Used", "value": 64}, {"date": "2025-05-28", "name": "New", "value": 37}, {"date": "2025-05-28", "name": "Used", "value": 63}, {"date": "2025-05-29", "name": "New", "value": 38}, {"date": "2025-05-29", "name": "Used", "value": 62}, {"date": "2025-05-30", "name": "New", "value": 39}, {"date": "2025-05-30", "name": "Used", "value": 61}];
+export const pieDataRaw = [{"date": "2025-04-11", "name": "New", "value": 30}, {"date": "2025-04-11", "name": "Used", "value": 70}, {"date": "2025-04-12", "name": "New", "value": 31}, {"date": "2025-04-12", "name": "Used", "value": 69}, {"date": "2025-04-13", "name": "New", "value": 32}, {"date": "2025-04-13", "name": "Used", "value": 68}, {"date": "2025-04-14", "name": "New", "value": 33}, {"date": "2025-04-14", "name": "Used", "value": 67}, {"date": "2025-04-15", "name": "New", "value": 34}, {"date": "2025-04-15", "name": "Used", "value": 66}, {"date": "2025-04-16", "name": "New", "value": 35}, {"date": "2025-04-16", "name": "Used", "value": 65}, {"date": "2025-04-17", "name": "New", "value": 36}, {"date": "2025-04-17", "name": "Used", "value": 64}, {"date": "2025-04-18", "name": "New", "value": 37}, {"date": "2025-04-18", "name": "Used", "value": 63}, {"date": "2025-04-19", "name": "New", "value": 38}, {"date": "2025-04-19", "name": "Used", "value": 62}, {"date": "2025-04-20", "name": "New", "value": 39}, {"date": "2025-04-20", "name": "Used", "value": 61}, {"date": "2025-04-21", "name": "New", "value": 30}, {"date": "2025-04-21", "name": "Used", "value": 70}, {"date": "2025-04-22", "name": "New", "value": 31}, {"date": "2025-04-22", "name": "Used", "value": 69}, {"date": "2025-04-23", "name": "New", "value": 32}, {"date": "2025-04-23", "name": "Used", "value": 68}, {"date": "2025-04-24", "name": "New", "value": 33}, {"date": "2025-04-24", "name": "Used", "value": 67}, {"date": "2025-04-25", "name": "New", "value": 34}, {"date": "2025-04-25", "name": "Used", "value": 66}, {"date": "2025-04-26", "name": "New", "value": 35}, {"date": "2025-04-26", "name": "Used", "value": 65}, {"date": "2025-04-27", "name": "New", "value": 36}, {"date": "2025-04-27", "name": "Used", "value": 64}, {"date": "2025-04-28", "name": "New", "value": 37}, {"date": "2025-04-28", "name": "Used", "value": 63}, {"date": "2025-04-29", "name": "New", "value": 38}, {"date": "2025-04-29", "name": "Used", "value": 62}, {"date": "2025-04-30", "name": "New", "value": 39}, {"date": "2025-04-30", "name": "Used", "value": 61}, {"date": "2025-06-20", "name": "New", "value": 30}, {"date": "2025-06-20", "name": "Used", "value": 70}, {"date": "2025-06-20", "name": "New", "value": 31}, {"date": "2025-06-20", "name": "Used", "value": 69}, {"date": "2025-06-20", "name": "New", "value": 32}, {"date": "2025-06-20", "name": "Used", "value": 68}, {"date": "2025-06-20", "name": "New", "value": 33}, {"date": "2025-06-20", "name": "Used", "value": 67}, {"date": "2025-06-20", "name": "New", "value": 34}, {"date": "2025-06-20", "name": "Used", "value": 66}, {"date": "2025-06-20", "name": "New", "value": 35}, {"date": "2025-06-20", "name": "Used", "value": 65}, {"date": "2025-06-20", "name": "New", "value": 36}, {"date": "2025-06-20", "name": "Used", "value": 64}, {"date": "2025-06-20", "name": "New", "value": 37}, {"date": "2025-06-20", "name": "Used", "value": 63}, {"date": "2025-06-20", "name": "New", "value": 38}, {"date": "2025-06-20", "name": "Used", "value": 62}, {"date": "2025-06-20", "name": "New", "value": 39}, {"date": "2025-06-20", "name": "Used", "value": 61}, {"date": "2025-06-20", "name": "New", "value": 30}, {"date": "2025-06-20", "name": "Used", "value": 70}, {"date": "2025-06-20", "name": "New", "value": 31}, {"date": "2025-06-20", "name": "Used", "value": 69}, {"date": "2025-06-20", "name": "New", "value": 32}, {"date": "2025-06-20", "name": "Used", "value": 68}, {"date": "2025-06-20", "name": "New", "value": 33}, {"date": "2025-06-20", "name": "Used", "value": 67}, {"date": "2025-06-20", "name": "New", "value": 34}, {"date": "2025-06-20", "name": "Used", "value": 66}, {"date": "2025-06-20", "name": "New", "value": 35}, {"date": "2025-06-20", "name": "Used", "value": 65}, {"date": "2025-06-20", "name": "New", "value": 36}, {"date": "2025-06-20", "name": "Used", "value": 64}, {"date": "2025-06-20", "name": "New", "value": 37}, {"date": "2025-06-20", "name": "Used", "value": 63}, {"date": "2025-06-20", "name": "New", "value": 38}, {"date": "2025-06-20", "name": "Used", "value": 62}, {"date": "2025-06-20", "name": "New", "value": 39}, {"date": "2025-06-20", "name": "Used", "value": 61}, {"date": "2025-06-20", "name": "New", "value": 30}, {"date": "2025-06-20", "name": "Used", "value": 70}, {"date": "2025-06-20", "name": "New", "value": 31}, {"date": "2025-06-20", "name": "Used", "value": 69}, {"date": "2025-06-20", "name": "New", "value": 32}, {"date": "2025-06-20", "name": "Used", "value": 68}, {"date": "2025-06-20", "name": "New", "value": 33}, {"date": "2025-06-20", "name": "Used", "value": 67}, {"date": "2025-06-20", "name": "New", "value": 34}, {"date": "2025-06-20", "name": "Used", "value": 66}, {"date": "2025-06-20", "name": "New", "value": 35}, {"date": "2025-06-20", "name": "Used", "value": 65}, {"date": "2025-06-20", "name": "New", "value": 36}, {"date": "2025-06-20", "name": "Used", "value": 64}, {"date": "2025-06-20", "name": "New", "value": 37}, {"date": "2025-06-20", "name": "Used", "value": 63}, {"date": "2025-06-20", "name": "New", "value": 38}, {"date": "2025-06-20", "name": "Used", "value": 62}, {"date": "2025-06-20", "name": "New", "value": 39}, {"date": "2025-06-20", "name": "Used", "value": 61}];
 
 export const barData = [
   { date: "2025-04-11", stage: "Discovery", groupA: 20, groupB: 25 },

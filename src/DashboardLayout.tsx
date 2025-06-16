@@ -7,7 +7,7 @@ import TreemapChart from "./components/TreemapChart";
 import BubbleChart from "./components/BubbleChart";
 import FeedList from "./components/FeedList";
 import FilterPanel from "./components/FilterPanel";
-import { composedData, pieDataRaw, barData } from "./data";
+import { composedData, pieDataRaw, barData } from "./Data/data";
 
 
 export default function DashboardLayout() {
