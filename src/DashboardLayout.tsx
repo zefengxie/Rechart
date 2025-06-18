@@ -1,4 +1,3 @@
-// ✅ Refactored DashboardLayout with full modular components and TypeScript support
 import React, { useMemo, useState } from "react";
 import ComposedChartWidget from "./components/ComposedChartWidget";
 import PieChartWidget from "./components/PieChartWidget";
@@ -7,11 +6,12 @@ import TreemapChart from "./components/TreemapChart";
 import BubbleChart from "./components/BubbleChart";
 import FeedList from "./components/FeedList";
 import FilterPanel from "./components/FilterPanel";
-import { composedData, pieDataRaw, barData } from "./Data/data";
+import { composedData, barData } from "./Data/data";
 
 
 export default function DashboardLayout() {
-  const allDates = useMemo(() => composedData.map(d => d.date), []);
+  const allDates = useMemo(() => Array.from(new Set(composedData.map(d => d.date))), []);
+ 
   const [visibleDates, setVisibleDates] = useState(new Set(allDates));
   const toggleDate = (date: string) => {
     setVisibleDates(prev => {
@@ -55,6 +55,23 @@ export default function DashboardLayout() {
   const filtered = (data: any[]) =>
     data.filter(d => visibleDates.has(d.date) && (!d.make || visibleMakes.has(d.make)));
 
+const pieData = useMemo(() => {
+  const filteredData = filtered(composedData);
+  console.log("PieChart filteredData count:", filteredData.length);
+
+  const result = { New: 0, Used: 0 };
+  filteredData.forEach(d => {
+    if (d.state === "New") result.New += d.value;
+    else if (d.state === "Used") result.Used += d.value;
+  });
+
+  return [
+    { name: "New", value: result.New },
+    { name: "Used", value: result.Used }
+  ];
+}, [visibleDates, visibleMakes]);
+
+
   return (
     <div className="dashboard-root">
       <div className="dashboard-header">
@@ -90,11 +107,12 @@ export default function DashboardLayout() {
       </div>
 
       <div className="chart-grid">
-        <BarChartStageWidget rawData={barData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
-        <TreemapChart rawData={composedData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
-        <BubbleChart visibleDates={visibleDates} visibleMakes={visibleMakes} />
-        <PieChartWidget rawData={pieDataRaw} visibleDates={visibleDates} visibleMakes={visibleMakes} />
-      </div>
+  <BarChartStageWidget rawData={barData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
+  <TreemapChart rawData={composedData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
+  <BubbleChart visibleDates={visibleDates} visibleMakes={visibleMakes} />
+  <PieChartWidget data={pieData} />
+</div>
+
     </div>
   );
 }

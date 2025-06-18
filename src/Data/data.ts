@@ -23,357 +23,508 @@ export interface BarDatum {
 // ✅ 使用从 data.js 提取的数据（直接复制内容）:
 export const composedData = [
   {
-    "date": "2025-05-01",
-    "impressions": 47502,
-    "clicks": 64,
-    "value": 100,
-    "make": "Toyota"
-  },
-  {
-    "date": "2025-05-02",
-    "impressions": 30752,
-    "clicks": 42,
-    "value": 99,
-    "make": "BMW"
-  },
-  {
-    "date": "2025-05-03",
-    "impressions": 20131,
-    "clicks": 40,
-    "value": 98,
-    "make": "Honda"
-  },
-  {
-    "date": "2025-05-04",
-    "impressions": 29183,
-    "clicks": 57,
-    "value": 97,
-    "make": "Mazda"
-  },
-  {
-    "date": "2025-05-05",
-    "impressions": 42903,
-    "clicks": 58,
-    "value": 96,
-    "make": "Ford"
-  },
-  {
-    "date": "2025-05-06",
-    "impressions": 22977,
-    "clicks": 64,
-    "value": 95,
-    "make": "Hyundai"
-  },
-  {
-    "date": "2025-05-07",
-    "impressions": 46867,
-    "clicks": 59,
-    "value": 94,
-    "make": "Kia"
-  },
-  {
-    "date": "2025-05-08",
-    "impressions": 26934,
-    "clicks": 54,
-    "value": 93,
-    "make": "Nissan"
-  },
-  {
-    "date": "2025-05-09",
-    "impressions": 35893,
-    "clicks": 56,
-    "value": 92,
-    "make": "Volkswagen"
-  },
-  {
-    "date": "2025-05-10",
-    "impressions": 49579,
-    "clicks": 46,
-    "value": 91,
-    "make": "Subaru"
-  },
-  {
-    "date": "2025-05-11",
-    "impressions": 40961,
-    "clicks": 59,
-    "value": 90,
-    "make": "Toyota"
-  },
-  {
-    "date": "2025-05-12",
-    "impressions": 45824,
-    "clicks": 63,
-    "value": 89,
-    "make": "BMW"
-  },
-  {
-    "date": "2025-05-13",
-    "impressions": 24406,
-    "clicks": 62,
-    "value": 88,
-    "make": "Honda"
-  },
-  {
-    "date": "2025-05-14",
-    "impressions": 33231,
-    "clicks": 60,
-    "value": 87,
-    "make": "Mazda"
-  },
-  {
-    "date": "2025-05-15",
-    "impressions": 47384,
-    "clicks": 53,
-    "value": 86,
-    "make": "Ford"
+    "date": "2025-05-26",
+    "make": "Nissan",
+    "impressions": 19960,
+    "clicks": 32,
+    "value": 123,
+    "size": 57,
+    "state": "Used",
+    "name": "Model 8"
   },
   {
     "date": "2025-05-16",
-    "impressions": 29988,
-    "clicks": 49,
-    "value": 85,
-    "make": "Hyundai"
+    "make": "Volkswagen",
+    "impressions": 30516,
+    "clicks": 59,
+    "value": 137,
+    "size": 62,
+    "state": "Used",
+    "name": "Model 6"
   },
   {
-    "date": "2025-05-17",
-    "impressions": 40833,
-    "clicks": 69,
-    "value": 84,
-    "make": "Kia"
-  },
-  {
-    "date": "2025-05-18",
-    "impressions": 38966,
-    "clicks": 48,
-    "value": 83,
-    "make": "Nissan"
+    "date": "2025-05-08",
+    "make": "Ford",
+    "impressions": 19331,
+    "clicks": 20,
+    "value": 54,
+    "size": 61,
+    "state": "Used",
+    "name": "Model 7"
   },
   {
     "date": "2025-05-19",
-    "impressions": 34880,
-    "clicks": 51,
-    "value": 82,
-    "make": "Volkswagen"
-  },
-  {
-    "date": "2025-05-20",
-    "impressions": 20622,
-    "clicks": 69,
-    "value": 81,
-    "make": "Subaru"
+    "make": "BMW",
+    "impressions": 45429,
+    "clicks": 29,
+    "value": 103,
+    "size": 39,
+    "state": "Used",
+    "name": "Model 9"
   },
   {
     "date": "2025-05-21",
-    "impressions": 36160,
-    "clicks": 58,
-    "value": 80,
-    "make": "Toyota"
+    "make": "Hyundai",
+    "impressions": 44228,
+    "clicks": 92,
+    "value": 131,
+    "size": 78,
+    "state": "Used",
+    "name": "Model 3"
   },
   {
-    "date": "2025-05-22",
-    "impressions": 22230,
-    "clicks": 51,
-    "value": 79,
-    "make": "BMW"
-  },
-  {
-    "date": "2025-05-23",
-    "impressions": 22553,
-    "clicks": 42,
-    "value": 78,
-    "make": "Honda"
-  },
-  {
-    "date": "2025-05-24",
-    "impressions": 31004,
-    "clicks": 43,
-    "value": 77,
-    "make": "Mazda"
+    "date": "2025-05-05",
+    "make": "Volkswagen",
+    "impressions": 34894,
+    "clicks": 56,
+    "value": 172,
+    "size": 51,
+    "state": "Used",
+    "name": "Model 6"
   },
   {
     "date": "2025-05-25",
-    "impressions": 41598,
-    "clicks": 64,
-    "value": 76,
-    "make": "Ford"
+    "make": "Honda",
+    "impressions": 33624,
+    "clicks": 60,
+    "value": 126,
+    "size": 54,
+    "state": "Used",
+    "name": "Model 9"
   },
   {
-    "date": "2025-05-26",
-    "impressions": 42435,
-    "clicks": 42,
-    "value": 75,
-    "make": "Hyundai"
+    "date": "2025-05-11",
+    "make": "Kia",
+    "impressions": 33634,
+    "clicks": 13,
+    "value": 82,
+    "size": 74,
+    "state": "New",
+    "name": "Model 3"
   },
   {
-    "date": "2025-05-27",
-    "impressions": 31087,
-    "clicks": 48,
-    "value": 74,
-    "make": "Kia"
+    "date": "2025-05-09",
+    "make": "Ford",
+    "impressions": 34043,
+    "clicks": 29,
+    "value": 195,
+    "size": 31,
+    "state": "New",
+    "name": "Model 10"
   },
   {
-    "date": "2025-05-28",
-    "impressions": 38233,
-    "clicks": 64,
-    "value": 73,
-    "make": "Nissan"
+    "date": "2025-05-07",
+    "make": "Toyota",
+    "impressions": 35995,
+    "clicks": 61,
+    "value": 168,
+    "size": 79,
+    "state": "New",
+    "name": "Model 1"
   },
   {
-    "date": "2025-05-29",
-    "impressions": 27248,
-    "clicks": 64,
-    "value": 72,
-    "make": "Volkswagen"
+    "date": "2025-05-07",
+    "make": "Ford",
+    "impressions": 18136,
+    "clicks": 78,
+    "value": 183,
+    "size": 66,
+    "state": "New",
+    "name": "Model 2"
   },
   {
     "date": "2025-05-30",
-    "impressions": 48866,
-    "clicks": 51,
-    "value": 71,
-    "make": "Subaru"
-  },
-  {
-    "date": "2025-05-31",
-    "impressions": 33678,
-    "clicks": 67,
-    "value": 70,
-    "make": "Toyota"
-  },
-  {
-    "date": "2025-06-01",
-    "impressions": 44780,
-    "clicks": 63,
-    "value": 69,
-    "make": "BMW"
-  },
-  {
-    "date": "2025-06-02",
-    "impressions": 24173,
-    "clicks": 45,
-    "value": 68,
-    "make": "Honda"
-  },
-  {
-    "date": "2025-06-03",
-    "impressions": 32945,
-    "clicks": 50,
-    "value": 67,
-    "make": "Mazda"
-  },
-  {
-    "date": "2025-06-04",
-    "impressions": 25951,
-    "clicks": 63,
-    "value": 66,
-    "make": "Ford"
-  },
-  {
-    "date": "2025-06-05",
-    "impressions": 20812,
-    "clicks": 57,
-    "value": 65,
-    "make": "Hyundai"
-  },
-  {
-    "date": "2025-06-06",
-    "impressions": 27198,
-    "clicks": 54,
-    "value": 64,
-    "make": "Kia"
-  },
-  {
-    "date": "2025-06-07",
-    "impressions": 33195,
-    "clicks": 42,
-    "value": 63,
-    "make": "Nissan"
-  },
-  {
-    "date": "2025-06-08",
-    "impressions": 37607,
-    "clicks": 46,
-    "value": 62,
-    "make": "Volkswagen"
-  },
-  {
-    "date": "2025-06-09",
-    "impressions": 44278,
-    "clicks": 51,
-    "value": 61,
-    "make": "Subaru"
-  },
-  {
-    "date": "2025-06-10",
-    "impressions": 21171,
-    "clicks": 65,
-    "value": 60,
-    "make": "Toyota"
-  },
-  {
-    "date": "2025-06-11",
-    "impressions": 43872,
-    "clicks": 68,
-    "value": 59,
-    "make": "BMW"
-  },
-  {
-    "date": "2025-06-12",
-    "impressions": 31368,
-    "clicks": 65,
-    "value": 58,
-    "make": "Honda"
-  },
-  {
-    "date": "2025-06-13",
-    "impressions": 29468,
-    "clicks": 48,
-    "value": 57,
-    "make": "Mazda"
-  },
-  {
-    "date": "2025-06-14",
-    "impressions": 34772,
+    "make": "Hyundai",
+    "impressions": 14066,
     "clicks": 40,
-    "value": 56,
-    "make": "Ford"
+    "value": 175,
+    "size": 76,
+    "state": "New",
+    "name": "Model 8"
   },
   {
-    "date": "2025-06-15",
-    "impressions": 44479,
-    "clicks": 69,
-    "value": 55,
-    "make": "Hyundai"
+    "date": "2025-05-08",
+    "make": "Toyota",
+    "impressions": 24277,
+    "clicks": 42,
+    "value": 117,
+    "size": 29,
+    "state": "Used",
+    "name": "Model 9"
   },
   {
-    "date": "2025-06-16",
-    "impressions": 42856,
-    "clicks": 56,
-    "value": 54,
-    "make": "Kia"
+    "date": "2025-05-09",
+    "make": "Ford",
+    "impressions": 23340,
+    "clicks": 58,
+    "value": 86,
+    "size": 25,
+    "state": "Used",
+    "name": "Model 2"
   },
   {
-    "date": "2025-06-17",
-    "impressions": 26181,
-    "clicks": 50,
-    "value": 53,
-    "make": "Nissan"
-  },
-  {
-    "date": "2025-06-18",
-    "impressions": 41216,
+    "date": "2025-05-13",
+    "make": "Hyundai",
+    "impressions": 17915,
     "clicks": 44,
-    "value": 52,
-    "make": "Volkswagen"
+    "value": 70,
+    "size": 30,
+    "state": "Used",
+    "name": "Model 2"
   },
   {
-    "date": "2025-06-19",
-    "impressions": 33232,
-    "clicks": 68,
-    "value": 51,
-    "make": "Subaru"
+    "date": "2025-05-14",
+    "make": "Volkswagen",
+    "impressions": 35193,
+    "clicks": 60,
+    "value": 120,
+    "size": 40,
+    "state": "Used",
+    "name": "Model 6"
+  },
+  {
+    "date": "2025-05-10",
+    "make": "Hyundai",
+    "impressions": 25820,
+    "clicks": 93,
+    "value": 104,
+    "size": 32,
+    "state": "Used",
+    "name": "Model 9"
+  },
+  {
+    "date": "2025-05-08",
+    "make": "Hyundai",
+    "impressions": 44750,
+    "clicks": 10,
+    "value": 176,
+    "size": 65,
+    "state": "Used",
+    "name": "Model 7"
+  },
+  {
+    "date": "2025-05-24",
+    "make": "Volkswagen",
+    "impressions": 28565,
+    "clicks": 27,
+    "value": 90,
+    "size": 45,
+    "state": "New",
+    "name": "Model 10"
+  },
+  {
+    "date": "2025-05-14",
+    "make": "Nissan",
+    "impressions": 23413,
+    "clicks": 82,
+    "value": 119,
+    "size": 44,
+    "state": "New",
+    "name": "Model 4"
+  },
+  {
+    "date": "2025-05-21",
+    "make": "Hyundai",
+    "impressions": 14502,
+    "clicks": 22,
+    "value": 96,
+    "size": 44,
+    "state": "New",
+    "name": "Model 5"
+  },
+  {
+    "date": "2025-05-03",
+    "make": "Ford",
+    "impressions": 41147,
+    "clicks": 62,
+    "value": 171,
+    "size": 30,
+    "state": "Used",
+    "name": "Model 4"
+  },
+  {
+    "date": "2025-05-27",
+    "make": "Subaru",
+    "impressions": 33253,
+    "clicks": 22,
+    "value": 90,
+    "size": 74,
+    "state": "Used",
+    "name": "Model 6"
+  },
+  {
+    "date": "2025-05-27",
+    "make": "BMW",
+    "impressions": 38215,
+    "clicks": 33,
+    "value": 86,
+    "size": 27,
+    "state": "New",
+    "name": "Model 9"
+  },
+  {
+    "date": "2025-05-11",
+    "make": "Kia",
+    "impressions": 20124,
+    "clicks": 92,
+    "value": 78,
+    "size": 71,
+    "state": "Used",
+    "name": "Model 9"
+  },
+  {
+    "date": "2025-05-08",
+    "make": "Volkswagen",
+    "impressions": 40252,
+    "clicks": 95,
+    "value": 141,
+    "size": 25,
+    "state": "New",
+    "name": "Model 4"
+  },
+  {
+    "date": "2025-05-12",
+    "make": "Hyundai",
+    "impressions": 44828,
+    "clicks": 74,
+    "value": 189,
+    "size": 21,
+    "state": "New",
+    "name": "Model 2"
+  },
+  {
+    "date": "2025-05-14",
+    "make": "Hyundai",
+    "impressions": 49206,
+    "clicks": 35,
+    "value": 143,
+    "size": 62,
+    "state": "New",
+    "name": "Model 8"
+  },
+  {
+    "date": "2025-05-22",
+    "make": "Ford",
+    "impressions": 49183,
+    "clicks": 64,
+    "value": 118,
+    "size": 36,
+    "state": "New",
+    "name": "Model 2"
+  },
+  {
+    "date": "2025-05-30",
+    "make": "Honda",
+    "impressions": 39916,
+    "clicks": 14,
+    "value": 109,
+    "size": 24,
+    "state": "New",
+    "name": "Model 6"
+  },
+  {
+    "date": "2025-05-07",
+    "make": "Kia",
+    "impressions": 41579,
+    "clicks": 31,
+    "value": 179,
+    "size": 43,
+    "state": "Used",
+    "name": "Model 9"
+  },
+  {
+    "date": "2025-05-11",
+    "make": "Kia",
+    "impressions": 29351,
+    "clicks": 23,
+    "value": 54,
+    "size": 30,
+    "state": "Used",
+    "name": "Model 10"
+  },
+  {
+    "date": "2025-05-23",
+    "make": "Honda",
+    "impressions": 17798,
+    "clicks": 40,
+    "value": 55,
+    "size": 63,
+    "state": "New",
+    "name": "Model 6"
+  },
+  {
+    "date": "2025-05-01",
+    "make": "Honda",
+    "impressions": 22641,
+    "clicks": 93,
+    "value": 147,
+    "size": 67,
+    "state": "Used",
+    "name": "Model 7"
+  },
+  {
+    "date": "2025-05-20",
+    "make": "Mazda",
+    "impressions": 34839,
+    "clicks": 75,
+    "value": 190,
+    "size": 78,
+    "state": "Used",
+    "name": "Model 9"
+  },
+  {
+    "date": "2025-05-29",
+    "make": "Honda",
+    "impressions": 26996,
+    "clicks": 12,
+    "value": 65,
+    "size": 73,
+    "state": "Used",
+    "name": "Model 10"
+  },
+  {
+    "date": "2025-05-17",
+    "make": "Ford",
+    "impressions": 18051,
+    "clicks": 24,
+    "value": 175,
+    "size": 26,
+    "state": "Used",
+    "name": "Model 9"
+  },
+  {
+    "date": "2025-05-05",
+    "make": "Hyundai",
+    "impressions": 41807,
+    "clicks": 83,
+    "value": 163,
+    "size": 45,
+    "state": "Used",
+    "name": "Model 3"
+  },
+  {
+    "date": "2025-05-30",
+    "make": "BMW",
+    "impressions": 38557,
+    "clicks": 35,
+    "value": 143,
+    "size": 79,
+    "state": "Used",
+    "name": "Model 10"
+  },
+  {
+    "date": "2025-05-18",
+    "make": "Nissan",
+    "impressions": 39557,
+    "clicks": 46,
+    "value": 139,
+    "size": 37,
+    "state": "Used",
+    "name": "Model 4"
+  },
+  {
+    "date": "2025-05-07",
+    "make": "Mazda",
+    "impressions": 39474,
+    "clicks": 65,
+    "value": 98,
+    "size": 67,
+    "state": "Used",
+    "name": "Model 8"
+  },
+  {
+    "date": "2025-05-13",
+    "make": "Mazda",
+    "impressions": 38109,
+    "clicks": 72,
+    "value": 121,
+    "size": 54,
+    "state": "Used",
+    "name": "Model 2"
+  },
+  {
+    "date": "2025-05-17",
+    "make": "Volkswagen",
+    "impressions": 22827,
+    "clicks": 67,
+    "value": 181,
+    "size": 47,
+    "state": "Used",
+    "name": "Model 9"
+  },
+  {
+    "date": "2025-05-07",
+    "make": "BMW",
+    "impressions": 41744,
+    "clicks": 20,
+    "value": 187,
+    "size": 52,
+    "state": "Used",
+    "name": "Model 3"
+  },
+  {
+    "date": "2025-05-02",
+    "make": "Subaru",
+    "impressions": 41818,
+    "clicks": 88,
+    "value": 100,
+    "size": 35,
+    "state": "New",
+    "name": "Model 5"
+  },
+  {
+    "date": "2025-05-08",
+    "make": "BMW",
+    "impressions": 48611,
+    "clicks": 10,
+    "value": 55,
+    "size": 49,
+    "state": "New",
+    "name": "Model 5"
+  },
+  {
+    "date": "2025-05-30",
+    "make": "Volkswagen",
+    "impressions": 43674,
+    "clicks": 31,
+    "value": 159,
+    "size": 67,
+    "state": "Used",
+    "name": "Model 1"
+  },
+  {
+    "date": "2025-05-06",
+    "make": "Honda",
+    "impressions": 36706,
+    "clicks": 10,
+    "value": 69,
+    "size": 46,
+    "state": "New",
+    "name": "Model 5"
+  },
+  {
+    "date": "2025-05-07",
+    "make": "Volkswagen",
+    "impressions": 16926,
+    "clicks": 50,
+    "value": 68,
+    "size": 33,
+    "state": "New",
+    "name": "Model 6"
+  },
+  {
+    "date": "2025-05-20",
+    "make": "Honda",
+    "impressions": 10631,
+    "clicks": 29,
+    "value": 144,
+    "size": 74,
+    "state": "Used",
+    "name": "Model 3"
   }
 ];
-export const pieDataRaw = [{"date": "2025-04-11", "name": "New", "value": 30}, {"date": "2025-04-11", "name": "Used", "value": 70}, {"date": "2025-04-12", "name": "New", "value": 31}, {"date": "2025-04-12", "name": "Used", "value": 69}, {"date": "2025-04-13", "name": "New", "value": 32}, {"date": "2025-04-13", "name": "Used", "value": 68}, {"date": "2025-04-14", "name": "New", "value": 33}, {"date": "2025-04-14", "name": "Used", "value": 67}, {"date": "2025-04-15", "name": "New", "value": 34}, {"date": "2025-04-15", "name": "Used", "value": 66}, {"date": "2025-04-16", "name": "New", "value": 35}, {"date": "2025-04-16", "name": "Used", "value": 65}, {"date": "2025-04-17", "name": "New", "value": 36}, {"date": "2025-04-17", "name": "Used", "value": 64}, {"date": "2025-04-18", "name": "New", "value": 37}, {"date": "2025-04-18", "name": "Used", "value": 63}, {"date": "2025-04-19", "name": "New", "value": 38}, {"date": "2025-04-19", "name": "Used", "value": 62}, {"date": "2025-04-20", "name": "New", "value": 39}, {"date": "2025-04-20", "name": "Used", "value": 61}, {"date": "2025-04-21", "name": "New", "value": 30}, {"date": "2025-04-21", "name": "Used", "value": 70}, {"date": "2025-04-22", "name": "New", "value": 31}, {"date": "2025-04-22", "name": "Used", "value": 69}, {"date": "2025-04-23", "name": "New", "value": 32}, {"date": "2025-04-23", "name": "Used", "value": 68}, {"date": "2025-04-24", "name": "New", "value": 33}, {"date": "2025-04-24", "name": "Used", "value": 67}, {"date": "2025-04-25", "name": "New", "value": 34}, {"date": "2025-04-25", "name": "Used", "value": 66}, {"date": "2025-04-26", "name": "New", "value": 35}, {"date": "2025-04-26", "name": "Used", "value": 65}, {"date": "2025-04-27", "name": "New", "value": 36}, {"date": "2025-04-27", "name": "Used", "value": 64}, {"date": "2025-04-28", "name": "New", "value": 37}, {"date": "2025-04-28", "name": "Used", "value": 63}, {"date": "2025-04-29", "name": "New", "value": 38}, {"date": "2025-04-29", "name": "Used", "value": 62}, {"date": "2025-04-30", "name": "New", "value": 39}, {"date": "2025-04-30", "name": "Used", "value": 61}, {"date": "2025-06-20", "name": "New", "value": 30}, {"date": "2025-06-20", "name": "Used", "value": 70}, {"date": "2025-06-20", "name": "New", "value": 31}, {"date": "2025-06-20", "name": "Used", "value": 69}, {"date": "2025-06-20", "name": "New", "value": 32}, {"date": "2025-06-20", "name": "Used", "value": 68}, {"date": "2025-06-20", "name": "New", "value": 33}, {"date": "2025-06-20", "name": "Used", "value": 67}, {"date": "2025-06-20", "name": "New", "value": 34}, {"date": "2025-06-20", "name": "Used", "value": 66}, {"date": "2025-06-20", "name": "New", "value": 35}, {"date": "2025-06-20", "name": "Used", "value": 65}, {"date": "2025-06-20", "name": "New", "value": 36}, {"date": "2025-06-20", "name": "Used", "value": 64}, {"date": "2025-06-20", "name": "New", "value": 37}, {"date": "2025-06-20", "name": "Used", "value": 63}, {"date": "2025-06-20", "name": "New", "value": 38}, {"date": "2025-06-20", "name": "Used", "value": 62}, {"date": "2025-06-20", "name": "New", "value": 39}, {"date": "2025-06-20", "name": "Used", "value": 61}, {"date": "2025-06-20", "name": "New", "value": 30}, {"date": "2025-06-20", "name": "Used", "value": 70}, {"date": "2025-06-20", "name": "New", "value": 31}, {"date": "2025-06-20", "name": "Used", "value": 69}, {"date": "2025-06-20", "name": "New", "value": 32}, {"date": "2025-06-20", "name": "Used", "value": 68}, {"date": "2025-06-20", "name": "New", "value": 33}, {"date": "2025-06-20", "name": "Used", "value": 67}, {"date": "2025-06-20", "name": "New", "value": 34}, {"date": "2025-06-20", "name": "Used", "value": 66}, {"date": "2025-06-20", "name": "New", "value": 35}, {"date": "2025-06-20", "name": "Used", "value": 65}, {"date": "2025-06-20", "name": "New", "value": 36}, {"date": "2025-06-20", "name": "Used", "value": 64}, {"date": "2025-06-20", "name": "New", "value": 37}, {"date": "2025-06-20", "name": "Used", "value": 63}, {"date": "2025-06-20", "name": "New", "value": 38}, {"date": "2025-06-20", "name": "Used", "value": 62}, {"date": "2025-06-20", "name": "New", "value": 39}, {"date": "2025-06-20", "name": "Used", "value": 61}, {"date": "2025-06-20", "name": "New", "value": 30}, {"date": "2025-06-20", "name": "Used", "value": 70}, {"date": "2025-06-20", "name": "New", "value": 31}, {"date": "2025-06-20", "name": "Used", "value": 69}, {"date": "2025-06-20", "name": "New", "value": 32}, {"date": "2025-06-20", "name": "Used", "value": 68}, {"date": "2025-06-20", "name": "New", "value": 33}, {"date": "2025-06-20", "name": "Used", "value": 67}, {"date": "2025-06-20", "name": "New", "value": 34}, {"date": "2025-06-20", "name": "Used", "value": 66}, {"date": "2025-06-20", "name": "New", "value": 35}, {"date": "2025-06-20", "name": "Used", "value": 65}, {"date": "2025-06-20", "name": "New", "value": 36}, {"date": "2025-06-20", "name": "Used", "value": 64}, {"date": "2025-06-20", "name": "New", "value": 37}, {"date": "2025-06-20", "name": "Used", "value": 63}, {"date": "2025-06-20", "name": "New", "value": 38}, {"date": "2025-06-20", "name": "Used", "value": 62}, {"date": "2025-06-20", "name": "New", "value": 39}, {"date": "2025-06-20", "name": "Used", "value": 61}];
+
+
 
 export const barData = [
   { date: "2025-04-11", stage: "Discovery", groupA: 20, groupB: 25 },
