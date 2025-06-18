@@ -1,4 +1,6 @@
+// src/DashboardLayout.tsx
 import React, { useMemo, useState } from "react";
+import { parseISO, startOfDay } from "date-fns";
 import ComposedChartWidget from "./components/ComposedChartWidget";
 import PieChartWidget from "./components/PieChartWidget";
 import BarChartStageWidget from "./components/BarChartStageWidget";
@@ -8,10 +10,8 @@ import FeedList from "./components/FeedList";
 import FilterPanel from "./components/FilterPanel";
 import { composedData, barData } from "./Data/data";
 
-
 export default function DashboardLayout() {
   const allDates = useMemo(() => Array.from(new Set(composedData.map(d => d.date))), []);
- 
   const [visibleDates, setVisibleDates] = useState(new Set(allDates));
   const toggleDate = (date: string) => {
     setVisibleDates(prev => {
@@ -52,25 +52,48 @@ export default function DashboardLayout() {
     );
   };
 
+  // ✅ 日期范围状态
+  const [startDateFilter, setStartDateFilter] = useState<Date | null>(null);
+  const [endDateFilter, setEndDateFilter] = useState<Date | null>(null);
+
+  const handleDateRangeApply = (start: Date, end: Date) => {
+    setStartDateFilter(start);
+    setEndDateFilter(end);
+    console.log("Date range applied:", start.toISOString(), end.toISOString());
+  };
+
   const filtered = (data: any[]) =>
-    data.filter(d => visibleDates.has(d.date) && (!d.make || visibleMakes.has(d.make)));
+    data.filter(d => {
+      const inVisibleDate = visibleDates.has(d.date);
+      const inVisibleMake = !d.make || visibleMakes.has(d.make);
 
-const pieData = useMemo(() => {
-  const filteredData = filtered(composedData);
-  console.log("PieChart filteredData count:", filteredData.length);
+      const inRange = !startDateFilter || !endDateFilter || (() => {
+        try {
+          const current = startOfDay(parseISO(d.date));
+          const start = startOfDay(startDateFilter);
+          const end = startOfDay(endDateFilter);
+          return current >= start && current <= end;
+        } catch {
+          return false;
+        }
+      })();
 
-  const result = { New: 0, Used: 0 };
-  filteredData.forEach(d => {
-    if (d.state === "New") result.New += d.value;
-    else if (d.state === "Used") result.Used += d.value;
-  });
+      return inVisibleDate && inVisibleMake && inRange;
+    });
 
-  return [
-    { name: "New", value: result.New },
-    { name: "Used", value: result.Used }
-  ];
-}, [visibleDates, visibleMakes]);
+  const pieData = useMemo(() => {
+    const filteredData = filtered(composedData);
+    const result = { New: 0, Used: 0 };
+    filteredData.forEach(d => {
+      if (d.state === "New") result.New += d.value;
+      else if (d.state === "Used") result.Used += d.value;
+    });
 
+    return [
+      { name: "New", value: result.New },
+      { name: "Used", value: result.Used }
+    ];
+  }, [visibleDates, visibleMakes, startDateFilter, endDateFilter]);
 
   return (
     <div className="dashboard-root">
@@ -90,6 +113,7 @@ const pieData = useMemo(() => {
         visibleMakes={visibleMakes}
         toggleMake={toggleMake}
         toggleAllMakes={toggleAllMakes}
+        onDateRangeApply={handleDateRangeApply}
       />
 
       <div className="summary-cards">
@@ -107,12 +131,11 @@ const pieData = useMemo(() => {
       </div>
 
       <div className="chart-grid">
-  <BarChartStageWidget rawData={barData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
-  <TreemapChart rawData={composedData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
-  <BubbleChart visibleDates={visibleDates} visibleMakes={visibleMakes} />
-  <PieChartWidget data={pieData} />
-</div>
-
+        <BarChartStageWidget rawData={barData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
+        <TreemapChart rawData={filtered(composedData)} visibleDates={visibleDates} visibleMakes={visibleMakes} />
+        <BubbleChart visibleDates={visibleDates} visibleMakes={visibleMakes} />
+        <PieChartWidget data={pieData} />
+      </div>
     </div>
   );
 }

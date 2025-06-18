@@ -1,5 +1,9 @@
-// src/components/FilterPanel.tsx
-import React from "react";
+import React, { useState } from "react";
+import { DateRange, RangeKeyDict } from "react-date-range";
+import { addDays } from "date-fns";
+import { enUS } from "date-fns/locale";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 
 interface FilterPanelProps {
   selectedFilters: Set<string>;
@@ -12,6 +16,7 @@ interface FilterPanelProps {
   visibleMakes: Set<string>;
   toggleMake: (make: string) => void;
   toggleAllMakes: () => void;
+  onDateRangeApply?: (startDate: Date, endDate: Date) => void;
 }
 
 const filters = ["Date", "Make", "Model", "Bodystyle", "Badge", "Vehicle Condition"];
@@ -26,59 +31,165 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
   allMakes,
   visibleMakes,
   toggleMake,
-  toggleAllMakes
+  toggleAllMakes,
+  onDateRangeApply,
 }) => {
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: new Date("2025-05-01"),
+      endDate: new Date("2025-05-30"),
+      key: "selection" as const,
+    },
+  ]);
+
   return (
-    <div className="filter-bar">
+    <div className="filter-bar" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
       {filters.map(f => (
-        <div key={f} className="filter-wrapper">
+        <div key={f} className="filter-wrapper" style={{ position: "relative" }}>
           <button
             onClick={() => toggleFilter(f)}
             className={selectedFilters.has(f) ? "filter-button active" : "filter-button"}
+            style={{
+              padding: "6px 14px",
+              borderRadius: "999px",
+              border: "none",
+              backgroundColor: selectedFilters.has(f) ? "#1976d2" : "#eee",
+              color: selectedFilters.has(f) ? "white" : "black",
+              fontWeight: 500,
+              cursor: "pointer"
+            }}
           >
-            {f} <span className="arrow-down">▾</span>
+            {f} ▾
           </button>
 
+          {/* DATE RANGE PICKER */}
           {f === "Date" && selectedFilters.has("Date") && (
-            <div className="checkbox-dropdown">
-              <div className="dropdown-header">
-                Date In List
-                <button onClick={toggleAllDates} style={{ float: "right", fontSize: 12, background: "none", border: "none", color: "#4fc3f7", cursor: "pointer" }}>
-                  {visibleDates.size === allDates.length ? "✖ Deselect All" : "✔ Select All"}
+            <div style={{
+              position: "absolute",
+              zIndex: 9999,
+              background: "#fff",
+              borderRadius: 12,
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+              padding: 12,
+              top: "100%",
+              marginTop: 6
+            }}>
+              <DateRange
+                editableDateInputs={true}
+                onChange={(item: RangeKeyDict) =>
+                  setDateRange([
+                    {
+                      startDate: item.selection.startDate ?? new Date(),
+                      endDate: item.selection.endDate ?? new Date(),
+                      key: "selection",
+                    },
+                  ])
+                }
+                moveRangeOnFirstSelection={false}
+                ranges={dateRange}
+                locale={enUS}
+              />
+              <div style={{ marginTop: 8, textAlign: "right" }}>
+                <button
+                  style={{ marginRight: 8 }}
+                  onClick={() =>
+                    setDateRange([{
+                      startDate: new Date("2025-05-01"),
+                      endDate: new Date("2025-05-30"),
+                      key: "selection"
+                    }])
+                  }
+                >
+                  Cancel
                 </button>
-              </div>
-              <div className="dropdown-items">
-                {allDates.map(date => (
-                  <label key={date}>
-                    <input type="checkbox" checked={visibleDates.has(date)} onChange={() => toggleDate(date)} /> {date}
-                  </label>
-                ))}
+                <button
+                  style={{
+                    backgroundColor: "#2196f3",
+                    color: "white",
+                    padding: "6px 12px",
+                    borderRadius: 4,
+                    border: "none"
+                  }}
+                  onClick={() => {
+                    const start = dateRange[0].startDate!;
+                    const end = dateRange[0].endDate!;
+                    if (onDateRangeApply) {
+                      onDateRangeApply(start, end);
+                    }
+                  }}
+                >
+                  Apply
+                </button>
               </div>
             </div>
           )}
 
+          {/* MAKE CHECKBOX DROPDOWN */}
           {f === "Make" && selectedFilters.has("Make") && (
-            <div className="checkbox-dropdown">
-              <div className="dropdown-header">
+            <div style={{
+              position: "absolute",
+              zIndex: 9999,
+              background: "#fff",
+              borderRadius: 12,
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+              padding: 12,
+              top: "100%",
+              marginTop: 6,
+              width: 240
+            }}>
+              <div style={{
+                fontWeight: "bold",
+                fontSize: 14,
+                marginBottom: 8,
+                display: "flex",
+                justifyContent: "space-between"
+              }}>
                 Make In List
-                <button onClick={toggleAllMakes} style={{ float: "right", fontSize: 12, background: "none", border: "none", color: "#4fc3f7", cursor: "pointer" }}>
+                <button onClick={toggleAllMakes} style={{
+                  background: "none",
+                  border: "none",
+                  color: "#2196f3",
+                  cursor: "pointer",
+                  fontSize: 13
+                }}>
                   {visibleMakes.size === allMakes.length ? "✖ Deselect All" : "✔ Select All"}
                 </button>
               </div>
-              <div className="dropdown-items">
+              <div style={{
+                maxHeight: "210px",
+                overflowY: "auto",
+                display: "flex",
+                flexDirection: "column",
+                gap: "6px",
+                paddingRight: 4
+              }}>
                 {allMakes.map(make => (
-                  <label key={make}>
-                    <input type="checkbox" checked={visibleMakes.has(make)} onChange={() => toggleMake(make)} /> {make}
+                  <label key={make} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <input
+                      type="checkbox"
+                      checked={visibleMakes.has(make)}
+                      onChange={() => toggleMake(make)}
+                    />
+                    {make}
                   </label>
                 ))}
               </div>
             </div>
           )}
 
+          {/* 其他字段暂不实现 */}
           {!(f === "Date" || f === "Make") && selectedFilters.has(f) && (
-            <div className="checkbox-dropdown">
-              <div className="dropdown-header">No Options</div>
-              <div className="dropdown-items" style={{ color: '#aaa', padding: '6px 12px' }}>Coming Soon...</div>
+            <div style={{
+              position: "absolute",
+              zIndex: 9999,
+              background: "#fff",
+              borderRadius: 12,
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+              padding: 12,
+              top: "100%",
+              marginTop: 6
+            }}>
+              <div style={{ fontSize: 14, color: "#666" }}>No Options</div>
             </div>
           )}
         </div>
