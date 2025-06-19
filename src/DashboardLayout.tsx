@@ -125,6 +125,8 @@ export default function DashboardLayout() {
         ))}
       </div>
 
+
+
       <div className="top-section">
         <ComposedChartWidget data={filtered(composedData)} />
         <FeedList />
