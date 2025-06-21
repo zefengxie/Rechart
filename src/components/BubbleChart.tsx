@@ -16,7 +16,11 @@ export default function BubbleChart({ visibleDates, visibleMakes }: Props) {
 
   return (
     <div className="chart-box">
-      <h4>Bubble Chart</h4>
+      <h3 className="chart-title">Audience Buyer Journey Stages</h3>
+      <p className="chart-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
       <ResponsiveContainer width="100%" height={250}>
         <ScatterChart>
           <CartesianGrid />

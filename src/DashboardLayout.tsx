@@ -102,6 +102,11 @@ export default function DashboardLayout() {
         <div className="dashboard-menu">☰</div>
       </div>
 
+<div className="filter-wrapper">
+  <div className="filter-row">
+    <h3 className="filter-title">SELECT YOUR FILTERS:</h3>
+    <div className="filter-bar">
+
       <FilterPanel
         selectedFilters={selectedFilters}
         toggleFilter={toggleFilter}
@@ -115,15 +120,27 @@ export default function DashboardLayout() {
         toggleAllMakes={toggleAllMakes}
         onDateRangeApply={handleDateRangeApply}
       />
+    </div>
+  </div>
+</div>
+
+
 
       <div className="summary-cards">
-        {[{ label: 'Number of shared segments', value: '1,263' }, { label: 'Number of Make segments', value: '10' }, { label: 'Number of Model segments', value: '84' }].map(({ label, value }) => (
-          <div key={label} className="summary-card">
-            <div className="summary-label">{label}</div>
-            <div className="summary-value">{value}</div>
-          </div>
-        ))}
-      </div>
+  {[
+    { label: 'Number of shared segments', value: '1,263' },
+    { label: 'Number of Make segments', value: '10' },
+    { label: 'Number of Model segments', value: '84' },
+    { label: 'Number of Model segments', value: '84' },
+    { label: 'Number of Model segments', value: '84' }
+  ].map(({ label, value }) => (
+    <div key={label} className="summary-card">
+      <div className="summary-label">{label}</div>
+      <div className="summary-value">{value}</div>
+    </div>
+  ))}
+</div>
+
 
 
 
@@ -132,12 +149,19 @@ export default function DashboardLayout() {
         <FeedList />
       </div>
 
-      <div className="chart-grid">
-        <BarChartStageWidget rawData={barData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
-        <TreemapChart rawData={filtered(composedData)} visibleDates={visibleDates} visibleMakes={visibleMakes} />
-        <BubbleChart visibleDates={visibleDates} visibleMakes={visibleMakes} />
-        <PieChartWidget data={pieData} />
-      </div>
+
+<div className="chart-grid grid-2">
+  <BarChartStageWidget rawData={filtered(barData)} visibleDates={visibleDates} visibleMakes={visibleMakes} />
+  <TreemapChart rawData={filtered(composedData)} visibleDates={visibleDates} visibleMakes={visibleMakes} />
+</div>
+
+
+<div className="chart-grid grid-3">
+  <BubbleChart visibleDates={visibleDates} visibleMakes={visibleMakes} />
+  <PieChartWidget data={pieData} />
+  <PieChartWidget data={pieData} />
+</div>
+
     </div>
   );
 }

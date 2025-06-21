@@ -12,7 +12,10 @@ interface Props {
 export default function ComposedChartWidget({ data }: Props) {
   return (
     <div className="chart-box mobile-order-2">
-      <h4>Impressions and Clicks</h4>
+      <h3 className="chart-title">Impressions and Clicks</h3>
+      <p className="chart-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart data={data} margin={{ bottom: 30 }}>
           <CartesianGrid stroke="#444" />

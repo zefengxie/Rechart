@@ -103,23 +103,18 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                   Cancel
                 </button>
                 <button
-                  style={{
-                    backgroundColor: "#2196f3",
-                    color: "white",
-                    padding: "6px 12px",
-                    borderRadius: 4,
-                    border: "none"
-                  }}
-                  onClick={() => {
-                    const start = dateRange[0].startDate!;
-                    const end = dateRange[0].endDate!;
-                    if (onDateRangeApply) {
-                      onDateRangeApply(start, end);
-                    }
-                  }}
-                >
-                  Apply
-                </button>
+  className="apply-button"
+  onClick={() => {
+    const start = dateRange[0].startDate!;
+    const end = dateRange[0].endDate!;
+    if (onDateRangeApply) {
+      onDateRangeApply(start, end);
+    }
+  }}
+>
+  Apply
+</button>
+
               </div>
             </div>
           )}

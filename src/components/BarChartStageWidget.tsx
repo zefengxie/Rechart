@@ -45,7 +45,11 @@ export default function BarChartStageWidget({ rawData, visibleDates, visibleMake
 
   return (
     <div className="chart-box">
-      <h4>Audience Buyer Journey Stages</h4>
+      <h3 className="chart-title">Audience Buyer Journey Stages</h3>
+      <p className="chart-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
       <ResponsiveContainer width="100%" height={250}>
         <BarChart layout="vertical" data={barStageData} margin={{ left: 40 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#444" />

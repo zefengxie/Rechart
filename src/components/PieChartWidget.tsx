@@ -8,14 +8,16 @@ interface PieChartWidgetProps {
 
 const COLORS = ["#26c6da", "#66bb6a"];
 
-
 const PieChartWidget: React.FC<PieChartWidgetProps> = ({ data }) => {
-  console.log("PieChartWidget data:", data); // 确保组件被调用了
+
 
   return (
     <div className="chart-box">
+      <h3 className="chart-title">New vs Used Audiences</h3>
+      <p className="chart-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
 
-      <h4>New vs Used Audiences</h4>
       <ResponsiveContainer width="100%" height={250}>
         <PieChart>
           <Pie
