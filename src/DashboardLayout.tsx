@@ -9,8 +9,13 @@ import BubbleChart from "./components/BubbleChart";
 import FeedList from "./components/FeedList";
 import FilterPanel from "./components/FilterPanel";
 import { composedData, barData } from "./Data/data";
+import { Loader, Center } from '@mantine/core';
+
+
 
 export default function DashboardLayout() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const allDates = useMemo(() => Array.from(new Set(composedData.map(d => d.date))), []);
   const [visibleDates, setVisibleDates] = useState(new Set(allDates));
   const toggleDate = (date: string) => {
@@ -52,15 +57,21 @@ export default function DashboardLayout() {
     );
   };
 
-  // ✅ 日期范围状态
+
   const [startDateFilter, setStartDateFilter] = useState<Date | null>(null);
   const [endDateFilter, setEndDateFilter] = useState<Date | null>(null);
 
   const handleDateRangeApply = (start: Date, end: Date) => {
+  setIsLoading(true);
+
+  setTimeout(() => {
     setStartDateFilter(start);
     setEndDateFilter(end);
+    setIsLoading(false); 
     console.log("Date range applied:", start.toISOString(), end.toISOString());
-  };
+  }, 4000); 
+};
+
 
   const filtered = (data: any[]) =>
     data.filter(d => {
@@ -141,20 +152,14 @@ export default function DashboardLayout() {
   ))}
 </div>
 
-
-
-
       <div className="top-section">
         <ComposedChartWidget data={filtered(composedData)} />
         <FeedList />
       </div>
-
-
-<div className="chart-grid grid-2">
-  <BarChartStageWidget rawData={filtered(barData)} visibleDates={visibleDates} visibleMakes={visibleMakes} />
+       <div className="chart-grid grid-2">
+  <BarChartStageWidget rawData={barData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
   <TreemapChart rawData={filtered(composedData)} visibleDates={visibleDates} visibleMakes={visibleMakes} />
 </div>
-
 
 <div className="chart-grid grid-3">
   <BubbleChart visibleDates={visibleDates} visibleMakes={visibleMakes} />

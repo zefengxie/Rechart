@@ -55,6 +55,8 @@ export default function TreemapChart({ rawData, visibleDates, visibleMakes }: Tr
       <p className="chart-description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </p>
+      <div className="chart-wrapper" style={{ padding: "10px" }}>
+
       <ResponsiveContainer width="100%" height={250}>
         <Treemap
           data={processedData}
@@ -64,6 +66,7 @@ export default function TreemapChart({ rawData, visibleDates, visibleMakes }: Tr
           <Tooltip />
         </Treemap>
       </ResponsiveContainer>
+    </div>
     </div>
   );
 }
