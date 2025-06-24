@@ -1,4 +1,3 @@
-// src/components/BarChartStageWidget.tsx
 import React, { useMemo } from "react";
 import {
   ResponsiveContainer,
@@ -10,6 +9,7 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+import { Loader, Center } from "@mantine/core";
 
 interface RawDataItem {
   date: string;
@@ -23,9 +23,15 @@ interface Props {
   rawData: RawDataItem[];
   visibleDates: Set<string>;
   visibleMakes: Set<string>;
+  isLoading: boolean;
 }
 
-export default function BarChartStageWidget({ rawData, visibleDates, visibleMakes }: Props) {
+export default function BarChartStageWidget({
+  rawData,
+  visibleDates,
+  visibleMakes,
+  isLoading
+}: Props) {
   const barStageData = useMemo(() => {
     const filteredData = rawData.filter(
       (d) => visibleDates.has(d.date) && (!d.make || visibleMakes.has(d.make))
@@ -50,17 +56,23 @@ export default function BarChartStageWidget({ rawData, visibleDates, visibleMake
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </p>
 
-      <ResponsiveContainer width="100%" height={250}>
-        <BarChart layout="vertical" data={barStageData} margin={{ left: 40 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-          <XAxis type="number" stroke="#ccc" />
-          <YAxis type="category" dataKey="stage" stroke="#ccc" />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="groupA" fill="#26c6da" barSize={10} />
-          <Bar dataKey="groupB" fill="#66bb6a" barSize={10} />
-        </BarChart>
-      </ResponsiveContainer>
+      {isLoading ? (
+        <Center style={{ height: 250 }}>
+          <Loader color="teal" size="xl" />
+        </Center>
+      ) : (
+        <ResponsiveContainer width="100%" height={250}>
+          <BarChart layout="vertical" data={barStageData} margin={{ left: 40 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+            <XAxis type="number" stroke="#ccc" />
+            <YAxis type="category" dataKey="stage" stroke="#ccc" />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="groupA" fill="#26c6da" barSize={10} />
+            <Bar dataKey="groupB" fill="#66bb6a" barSize={10} />
+          </BarChart>
+        </ResponsiveContainer>
+      )}
     </div>
   );
 }

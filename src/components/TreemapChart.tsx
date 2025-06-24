@@ -1,10 +1,12 @@
 import React, { useMemo } from "react";
 import { Treemap, ResponsiveContainer, Tooltip } from "recharts";
+import { Loader, Center } from "@mantine/core";
 
 interface TreemapChartProps {
   rawData: any[];
   visibleDates: Set<string>;
   visibleMakes: Set<string>;
+  isLoading?: boolean;
 }
 
 const COLORS = [
@@ -34,7 +36,12 @@ const CustomizedContent = (props: any) => {
   );
 };
 
-export default function TreemapChart({ rawData, visibleDates, visibleMakes }: TreemapChartProps) {
+export default function TreemapChart({
+  rawData,
+  visibleDates,
+  visibleMakes,
+  isLoading = false,
+}: TreemapChartProps) {
   const processedData = useMemo(() => {
     const grouped: Record<string, { name: string; size: number }> = {};
     rawData.forEach(d => {
@@ -53,20 +60,26 @@ export default function TreemapChart({ rawData, visibleDates, visibleMakes }: Tr
     <div className="chart-box">
       <h3 className="chart-title">Treemap View</h3>
       <p className="chart-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Visualizes vehicle segment distribution across makes. The larger the box, the more vehicles in that segment.
       </p>
-      <div className="chart-wrapper" style={{ padding: "10px" }}>
 
-      <ResponsiveContainer width="100%" height={250}>
-        <Treemap
-          data={processedData}
-          dataKey="size"
-          content={<CustomizedContent />}
-        >
-          <Tooltip />
-        </Treemap>
-      </ResponsiveContainer>
-    </div>
+      <div className="chart-wrapper" style={{ padding: "10px", height: 250 }}>
+        {isLoading ? (
+          <Center style={{ height: "100%" }}>
+            <Loader color="teal" size="xl" />
+          </Center>
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <Treemap
+              data={processedData}
+              dataKey="size"
+              content={<CustomizedContent />}
+            >
+              <Tooltip />
+            </Treemap>
+          </ResponsiveContainer>
+        )}
+      </div>
     </div>
   );
 }

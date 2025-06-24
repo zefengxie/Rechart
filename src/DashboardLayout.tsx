@@ -69,7 +69,7 @@ export default function DashboardLayout() {
     setEndDateFilter(end);
     setIsLoading(false); 
     console.log("Date range applied:", start.toISOString(), end.toISOString());
-  }, 4000); 
+  }, 500); 
 };
 
 
@@ -153,19 +153,35 @@ export default function DashboardLayout() {
 </div>
 
       <div className="top-section">
-        <ComposedChartWidget data={filtered(composedData)} />
+        <ComposedChartWidget data={filtered(composedData)} isLoading={isLoading} />
         <FeedList />
       </div>
-       <div className="chart-grid grid-2">
-  <BarChartStageWidget rawData={barData} visibleDates={visibleDates} visibleMakes={visibleMakes} />
-  <TreemapChart rawData={filtered(composedData)} visibleDates={visibleDates} visibleMakes={visibleMakes} />
+     <div className="chart-grid grid-2">
+  <BarChartStageWidget
+    rawData={filtered(barData)}
+    visibleDates={visibleDates}
+    visibleMakes={visibleMakes}
+    isLoading={isLoading}
+  />
+  <TreemapChart
+    rawData={filtered(composedData)}
+    visibleDates={visibleDates}
+    visibleMakes={visibleMakes}
+    isLoading={isLoading}
+  />
 </div>
 
-<div className="chart-grid grid-3">
-  <BubbleChart visibleDates={visibleDates} visibleMakes={visibleMakes} />
-  <PieChartWidget data={pieData} />
-  <PieChartWidget data={pieData} />
+<div className="chart-grid grid-3 chart-container">
+  <PieChartWidget data={pieData} isLoading={isLoading} />
+  <PieChartWidget data={pieData} isLoading={isLoading} />
+  <BubbleChart
+    visibleDates={visibleDates}
+    visibleMakes={visibleMakes}
+
+  />
 </div>
+
+
 
     </div>
   );

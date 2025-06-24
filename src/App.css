@@ -459,6 +459,8 @@
 
 .chart-box-with-loader {
   position: relative;
+  height: 100%;           /* ✅ 让内部 div 撑满 grid cell */
+  min-height: 340px; 
 }
 
 .chart-spinner-overlay {
@@ -472,7 +474,7 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
-  border-radius: 8px;
+
 }
 
 
@@ -490,6 +492,7 @@
 
 .chart-grid.grid-2 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: stretch; 
 }
 
 @media (max-width: 480px) {
@@ -500,4 +503,16 @@
 
 .chart-grid.grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+
+
+.chart-box-with-loader {
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
 }
