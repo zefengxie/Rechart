@@ -125,6 +125,7 @@ export default function DashboardLayout() {
         visibleDates={visibleDates}
         toggleDate={toggleDate}
         toggleAllDates={toggleAllDates}
+        setVisibleMakes={setVisibleMakes}
         allMakes={allMakes}
         visibleMakes={visibleMakes}
         toggleMake={toggleMake}

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DateRange, RangeKeyDict } from "react-date-range";
-import { addDays } from "date-fns";
 import { enUS } from "date-fns/locale";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
@@ -16,6 +15,7 @@ interface FilterPanelProps {
   visibleMakes: Set<string>;
   toggleMake: (make: string) => void;
   toggleAllMakes: () => void;
+  setVisibleMakes: (makes: Set<string>) => void;
   onDateRangeApply?: (startDate: Date, endDate: Date) => void;
 }
 
@@ -32,6 +32,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
   visibleMakes,
   toggleMake,
   toggleAllMakes,
+  setVisibleMakes,
   onDateRangeApply,
 }) => {
   const [dateRange, setDateRange] = useState([
@@ -42,8 +43,14 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
     },
   ]);
 
+  const [localVisibleMakes, setLocalVisibleMakes] = useState(new Set(allMakes));
+
+  useEffect(() => {
+    setLocalVisibleMakes(new Set(visibleMakes));
+  }, [visibleMakes]);
+
   return (
-    <div className="filter-bar" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+    <div className="filter-bar" style={{ display: "flex", gap: "12px", flexWrap: "wrap", alignItems: "flex-start" }}>
       {filters.map(f => (
         <div key={f} className="filter-wrapper" style={{ position: "relative" }}>
           <button
@@ -89,33 +96,6 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                 ranges={dateRange}
                 locale={enUS}
               />
-              <div style={{ marginTop: 8, textAlign: "right" }}>
-                <button
-                  style={{ marginRight: 8 }}
-                  onClick={() =>
-                    setDateRange([{
-                      startDate: new Date("2025-05-01"),
-                      endDate: new Date("2025-05-30"),
-                      key: "selection"
-                    }])
-                  }
-                >
-                  Cancel
-                </button>
-                <button
-  className="apply-button"
-  onClick={() => {
-    const start = dateRange[0].startDate!;
-    const end = dateRange[0].endDate!;
-    if (onDateRangeApply) {
-      onDateRangeApply(start, end);
-    }
-  }}
->
-  Apply
-</button>
-
-              </div>
             </div>
           )}
 
@@ -140,14 +120,19 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                 justifyContent: "space-between"
               }}>
                 Make In List
-                <button onClick={toggleAllMakes} style={{
+                <button onClick={() => {
+                  setLocalVisibleMakes(prev => {
+                    const isAllSelected = prev.size === allMakes.length;
+                    return isAllSelected ? new Set() : new Set(allMakes);
+                  });
+                }} style={{
                   background: "none",
                   border: "none",
                   color: "#2196f3",
                   cursor: "pointer",
                   fontSize: 13
                 }}>
-                  {visibleMakes.size === allMakes.length ? "✖ Deselect All" : "✔ Select All"}
+                  {localVisibleMakes.size === allMakes.length ? "✖ Deselect All" : "✔ Select All"}
                 </button>
               </div>
               <div style={{
@@ -162,8 +147,14 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                   <label key={make} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                     <input
                       type="checkbox"
-                      checked={visibleMakes.has(make)}
-                      onChange={() => toggleMake(make)}
+                      checked={localVisibleMakes.has(make)}
+                      onChange={() => {
+                        setLocalVisibleMakes(prev => {
+                          const updated = new Set(prev);
+                          updated.has(make) ? updated.delete(make) : updated.add(make);
+                          return updated;
+                        });
+                      }}
                     />
                     {make}
                   </label>
@@ -172,7 +163,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
             </div>
           )}
 
-          {/* 其他字段暂不实现 */}
+          {/* OTHER FILTERS */}
           {!(f === "Date" || f === "Make") && selectedFilters.has(f) && (
             <div style={{
               position: "absolute",
@@ -189,6 +180,35 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
           )}
         </div>
       ))}
+
+      {/* APPLY FILTERS BUTTON */}
+      <div style={{ alignSelf: "flex-end" }}>
+        <button
+          className="apply-button"
+          style={{
+            backgroundColor: "#1976d2",
+            color: "white",
+            padding: "6px 18px",
+            border: "none",
+            borderRadius: 999,
+            cursor: "pointer",
+            fontWeight: 500
+          }}
+          onClick={() => {
+            const start = dateRange[0].startDate!;
+            const end = dateRange[0].endDate!;
+
+            // ✅ 直接设置 make 可见项
+            setVisibleMakes(new Set(localVisibleMakes));
+
+            if (onDateRangeApply) {
+              onDateRangeApply(start, end);
+            }
+          }}
+        >
+          Apply Filters
+        </button>
+      </div>
     </div>
   );
 };
