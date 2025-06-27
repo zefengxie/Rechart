@@ -48,16 +48,6 @@
 }
 
 
-.feed-list-card.compact {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 10px 0;
-  flex-grow: 1;
-}
-
-
-
 
 /* === Header and Layout === */
 .dashboard-root {
@@ -112,7 +102,7 @@
 
 .summary-label {
   font-size: 20px;       
-  color: #00796b;        
+  color: #007472;        
   font-weight: 600;
   margin-bottom: 4px;
   line-height: 1.4;
@@ -202,7 +192,7 @@
   font-family: "Roboto Slab", serif; 
   font-size: 30px;
   font-weight: bold;
-  color: #00796b;
+  color: #007472;
    margin: 12px 12px 12px 12px;
 }
 
@@ -239,39 +229,13 @@
 }
 
 
-
-
-
 .feed-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
+  
 }
 
-.feed-item {
-  display: flex;
-  gap: 14px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 16px;
-}
-
-
-.feed-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
-  object-fit: cover;
-  flex-shrink: 0;
-  background-color: #eee;
-}
-
-.feed-info {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 
 .feed-title-text {
@@ -283,20 +247,6 @@
   display: -webkit-box;
  
   -webkit-box-orient: vertical;
-}
-
-
-.feed-date {
-  font-size: 13px;
-  color: #555;
-}
-
-
-.feed-author {
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 2px;
-  color: #333;
 }
 
 
@@ -312,9 +262,7 @@
   padding: 10px;
 }
 
-.feed-item:hover {
-  background-color: #f2f2f2;
-}
+
 
 
 
@@ -399,7 +347,7 @@
   font-family: "Roboto Slab", serif;
   font-size: 22px;
   font-weight: bold;
-  color: #00796b;
+  color: #4ec59e;
   margin: 0;
   flex-shrink: 0;
 }
@@ -412,18 +360,20 @@
 
 
 .apply-button {
-  background-color: #2196f3;
+  background-color: #4ec59e;
   color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 6px 18px;
+  border-radius: 18px;
   border: none;
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s ease;
+  border: "none",
+
 }
 
 .apply-button:hover {
-  background-color: #1976d2;
+  background-color: #4ec59e;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -438,7 +388,9 @@
   font-family: "Roboto Slab", serif;
   font-size: 22px;
   font-weight: bold;
-  color: #00796b;
+  color: #007472;
+  text-align: center;
+
 
 }
 
@@ -503,6 +455,7 @@
 
 .chart-grid.grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: stretch; 
 }
 
 
@@ -515,4 +468,119 @@
   background: white;
   border-radius: 12px;
   padding: 20px;
+}
+
+
+
+.feed-card {
+  background: #fff;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feed-top-box {
+  display: flex;
+  align-items: flex-start; 
+  gap: 12px;
+  
+
+}
+
+
+
+.feed-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  background-color: #eee;
+  flex-shrink: 0;
+}
+
+.feed-title-text {
+  font-size: 14px;
+  text-decoration: none; 
+  font-weight: 600;
+ color: #333333;
+  flex: 1;
+}
+
+.feed-bottom-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  font-size: 13px;
+  color: #555;
+}
+
+.feed-date {
+  font-weight: 500;
+  color: #1E1E1E;
+}
+
+.feed-author {
+  font-weight: 500;
+  color: #444;
+  text-align: right;
+}
+
+.feed-item-link {
+  text-decoration: none;   
+  color: inherit;          
+}
+
+.feed-item-link:hover .feed-title-text {
+  text-decoration: underline;
+}
+
+
+
+
+
+.feed-divider {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 8px 0; /* 可以改小，比如 8px 而不是 12px 或 16px */
+}
+
+
+
+.feed-card {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.feed-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-button {
+  background-color: #e3f7fd;
+  color: #046472;
+  padding: 6px 12px;
+  border-radius: 16px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.explore-link {
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+
+.pie-chart-container {
+  min-height: 260px; 
 }

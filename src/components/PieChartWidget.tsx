@@ -12,7 +12,7 @@ const COLORS = ["#26c6da", "#66bb6a"];
 
 const PieChartWidget: React.FC<PieChartWidgetProps> = ({ data, isLoading = false }) => {
   return (
-    <div className="chart-box">
+    <div className="chart-box pie-chart-container">
       <h3 className="chart-title">New vs Used Audiences</h3>
       <p className="chart-description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -24,7 +24,7 @@ const PieChartWidget: React.FC<PieChartWidgetProps> = ({ data, isLoading = false
             <Loader color="teal" size="xl" />
           </Center>
         ) : (
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height={260}>
             <PieChart>
               <Pie
                 data={data}

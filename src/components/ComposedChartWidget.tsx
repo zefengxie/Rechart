@@ -25,7 +25,7 @@ export default function ComposedChartWidget({ data, isLoading = false }: Props) 
             <Loader color="teal" size="xl" />
           </Center>
         ) : (
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height="130%">
             <ComposedChart data={data} margin={{ bottom: 30 }}>
               <CartesianGrid stroke="#444" />
               <XAxis dataKey="date" angle={-45} textAnchor="end" height={60} stroke="#ccc" />

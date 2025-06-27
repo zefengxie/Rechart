@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { DateRange, RangeKeyDict } from "react-date-range";
 import { enUS } from "date-fns/locale";
 import "react-date-range/dist/styles.css";
@@ -45,12 +45,33 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
 
   const [localVisibleMakes, setLocalVisibleMakes] = useState(new Set(allMakes));
 
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     setLocalVisibleMakes(new Set(visibleMakes));
   }, [visibleMakes]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (panelRef.current && !panelRef.current.contains(event.target as Node)) {
+        if (selectedFilters.size > 0) {
+          selectedFilters.forEach(f => toggleFilter(f));
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [selectedFilters, toggleFilter]);
+
   return (
-    <div className="filter-bar" style={{ display: "flex", gap: "12px", flexWrap: "wrap", alignItems: "flex-start" }}>
+    <div
+      className="filter-bar"
+      ref={panelRef}
+      style={{ display: "flex", gap: "12px", flexWrap: "wrap", alignItems: "flex-start" }}
+    >
       {filters.map(f => (
         <div key={f} className="filter-wrapper" style={{ position: "relative" }}>
           <button
@@ -69,7 +90,6 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
             {f} ▾
           </button>
 
-          {/* DATE RANGE PICKER */}
           {f === "Date" && selectedFilters.has("Date") && (
             <div style={{
               position: "absolute",
@@ -84,13 +104,11 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
               <DateRange
                 editableDateInputs={true}
                 onChange={(item: RangeKeyDict) =>
-                  setDateRange([
-                    {
-                      startDate: item.selection.startDate ?? new Date(),
-                      endDate: item.selection.endDate ?? new Date(),
-                      key: "selection",
-                    },
-                  ])
+                  setDateRange([{
+                    startDate: item.selection.startDate ?? new Date(),
+                    endDate: item.selection.endDate ?? new Date(),
+                    key: "selection",
+                  }])
                 }
                 moveRangeOnFirstSelection={false}
                 ranges={dateRange}
@@ -99,7 +117,6 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
             </div>
           )}
 
-          {/* MAKE CHECKBOX DROPDOWN */}
           {f === "Make" && selectedFilters.has("Make") && (
             <div style={{
               position: "absolute",
@@ -163,7 +180,6 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
             </div>
           )}
 
-          {/* OTHER FILTERS */}
           {!(f === "Date" || f === "Make") && selectedFilters.has(f) && (
             <div style={{
               position: "absolute",
@@ -181,26 +197,14 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
         </div>
       ))}
 
-      {/* APPLY FILTERS BUTTON */}
       <div style={{ alignSelf: "flex-end" }}>
         <button
           className="apply-button"
-          style={{
-            backgroundColor: "#1976d2",
-            color: "white",
-            padding: "6px 18px",
-            border: "none",
-            borderRadius: 999,
-            cursor: "pointer",
-            fontWeight: 500
-          }}
+
           onClick={() => {
             const start = dateRange[0].startDate!;
             const end = dateRange[0].endDate!;
-
-            // ✅ 直接设置 make 可见项
             setVisibleMakes(new Set(localVisibleMakes));
-
             if (onDateRangeApply) {
               onDateRangeApply(start, end);
             }

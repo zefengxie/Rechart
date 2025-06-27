@@ -172,7 +172,7 @@ export default function DashboardLayout() {
   />
 </div>
 
-<div className="chart-grid grid-3 chart-container">
+<div className="chart-grid grid-3">
   <PieChartWidget data={pieData} isLoading={isLoading} />
   <PieChartWidget data={pieData} isLoading={isLoading} />
   <BubbleChart

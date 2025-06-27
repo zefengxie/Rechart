@@ -1,8 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import yarisImg from "./ToyotaYaris.avif";
-import hiluxImg from "./ToyotaHilux.webp";
-import fordImg from "./Ford.jpg";
 
 export type FeedItem = {
   title: string;
@@ -16,38 +13,48 @@ const feedItems: FeedItem[] = [
     title: "Bluey - World - TEQ - High impact campaign",
     date: "11-02-2025",
     author: "Shruneek Prasad",
-    img: yarisImg,
+    img: "/ToyotaYaris.avif", 
   },
   {
     title: "Getting ready for school holiday",
     date: "19-11-2024",
     author: "Shruneek Prasad",
-    img: hiluxImg,
+    img: "/ToyotaHilux.webp",
   },
   {
     title: "North Queensland - Exploring top end",
     date: "19-11-2024",
     author: "Shruneek Prasad",
-    img: fordImg,
+    img: "/Ford.jpg",
   },
 ];
 
 const FeedList: React.FC = () => (
   <div className="feed-box">
-    <h3 className="feed-title">TEQ Insights feed</h3>
+    <h3 className="feed-title">Data Storytelling Feed</h3>
     <div className="feed-list">
+      <hr className="feed-divider" />
       {feedItems.map(({ title, date, author, img }, index) => (
-        <Link key={index} to={`/details/${index}`} className="feed-item-link">
-          <div className="feed-item">
-            <img src={img} alt={title} className="feed-img" />
-            <div className="feed-info">
-              <div className="feed-title-text">{title}</div>
-              <div className="feed-date">{date}</div>
-              <div className="feed-author">{author}</div>
+        <React.Fragment key={index}>
+          <Link to={`/details/${index}`} className="feed-item-link">
+            <div className="feed-card">
+              <div className="feed-top-box">
+                <img src={img} alt={title} className="feed-img" />
+                <div className="feed-title-text">{title}</div>
+              </div>
+              <div className="feed-bottom-box">
+                <span className="feed-date">{date}</span>
+                <span className="feed-author">{author}</span>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+          <hr className="feed-divider" />
+        </React.Fragment>
       ))}
+      <div className="feed-footer">
+        <button className="add-button">Add to Feed ＋</button>
+        <div className="explore-link">Explore All &gt;</div>
+      </div>
     </div>
   </div>
 );
