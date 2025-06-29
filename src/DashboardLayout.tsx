@@ -1,4 +1,3 @@
-// src/DashboardLayout.tsx
 import React, { useMemo, useState } from "react";
 import { parseISO, startOfDay } from "date-fns";
 import ComposedChartWidget from "./components/ComposedChartWidget";
@@ -10,8 +9,8 @@ import FeedList from "./components/FeedList";
 import FilterPanel from "./components/FilterPanel";
 import { composedData, barData } from "./Data/data";
 import { Loader, Center } from '@mantine/core';
-
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 export default function DashboardLayout() {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,27 +56,22 @@ export default function DashboardLayout() {
     );
   };
 
-
   const [startDateFilter, setStartDateFilter] = useState<Date | null>(null);
   const [endDateFilter, setEndDateFilter] = useState<Date | null>(null);
 
   const handleDateRangeApply = (start: Date, end: Date) => {
-  setIsLoading(true);
-
-  setTimeout(() => {
-    setStartDateFilter(start);
-    setEndDateFilter(end);
-    setIsLoading(false); 
-    console.log("Date range applied:", start.toISOString(), end.toISOString());
-  }, 500); 
-};
-
+    setIsLoading(true);
+    setTimeout(() => {
+      setStartDateFilter(start);
+      setEndDateFilter(end);
+      setIsLoading(false);
+    }, 500);
+  };
 
   const filtered = (data: any[]) =>
     data.filter(d => {
       const inVisibleDate = visibleDates.has(d.date);
       const inVisibleMake = !d.make || visibleMakes.has(d.make);
-
       const inRange = !startDateFilter || !endDateFilter || (() => {
         try {
           const current = startOfDay(parseISO(d.date));
@@ -99,91 +93,102 @@ export default function DashboardLayout() {
       if (d.state === "New") result.New += d.value;
       else if (d.state === "Used") result.Used += d.value;
     });
-
     return [
       { name: "New", value: result.New },
       { name: "Used", value: result.Used }
     ];
   }, [visibleDates, visibleMakes, startDateFilter, endDateFilter]);
 
+  const handleDownload = async () => {
+    const input = document.body; // or use a specific element like document.querySelector('.dashboard-root')
+    const canvas = await html2canvas(input);
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const imgProps = pdf.getImageProperties(imgData);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save("dashboard.pdf");
+  };
+
   return (
-    <div className="dashboard-root">
+    <>
       <div className="dashboard-header">
-        <h2 className="dashboard-title">Audience Insights</h2>
-        <div className="dashboard-menu">☰</div>
+        <h2 className="dashboard-title">HONDA DATA DEAL INSIGHTS</h2>
+        <div className="dashboard-menu-buttons">
+          <button className="insight-btn">CAMPAIGN INSIGHT &gt;</button>
+          <button className="insight-btn">CONVERSION INSIGHT &gt;</button>
+          <button className="download-btn" onClick={handleDownload}>
+            DOWNLOAD
+          </button>
+        </div>
       </div>
 
-<div className="filter-wrapper">
-  <div className="filter-row">
-    <h3 className="filter-title">SELECT YOUR FILTERS:</h3>
-    <div className="filter-bar">
+      <div className="dashboard-root">
+        <div className="filter-wrapper">
+          <div className="filter-row">
+            <h3 className="filter-title">SELECT YOUR FILTERS:</h3>
+            <div className="filter-bar">
+              <FilterPanel
+                selectedFilters={selectedFilters}
+                toggleFilter={toggleFilter}
+                allDates={allDates}
+                visibleDates={visibleDates}
+                toggleDate={toggleDate}
+                toggleAllDates={toggleAllDates}
+                setVisibleMakes={setVisibleMakes}
+                allMakes={allMakes}
+                visibleMakes={visibleMakes}
+                toggleMake={toggleMake}
+                toggleAllMakes={toggleAllMakes}
+                onDateRangeApply={handleDateRangeApply}
+              />
+            </div>
+          </div>
+        </div>
 
-      <FilterPanel
-        selectedFilters={selectedFilters}
-        toggleFilter={toggleFilter}
-        allDates={allDates}
-        visibleDates={visibleDates}
-        toggleDate={toggleDate}
-        toggleAllDates={toggleAllDates}
-        setVisibleMakes={setVisibleMakes}
-        allMakes={allMakes}
-        visibleMakes={visibleMakes}
-        toggleMake={toggleMake}
-        toggleAllMakes={toggleAllMakes}
-        onDateRangeApply={handleDateRangeApply}
-      />
-    </div>
-  </div>
-</div>
+        <div className="summary-cards">
+          {[ 
+            { label: 'Number of shared segments', value: '1,263' },
+            { label: 'Number of Make segments', value: '10' },
+            { label: 'Number of Model segments', value: '84' }
+          ].map(({ label, value }) => (
+            <div key={label} className="summary-card">
+              <div className="summary-label">{label}</div>
+              <div className="summary-value">{value}</div>
+            </div>
+          ))}
+        </div>
 
+        <div className="top-section">
+          <ComposedChartWidget data={filtered(composedData)} isLoading={isLoading} />
+          <FeedList />
+        </div>
 
+        <div className="chart-grid grid-2">
+          <BarChartStageWidget
+            rawData={filtered(barData)}
+            visibleDates={visibleDates}
+            visibleMakes={visibleMakes}
+            isLoading={isLoading}
+          />
+          <TreemapChart
+            rawData={filtered(composedData)}
+            visibleDates={visibleDates}
+            visibleMakes={visibleMakes}
+            isLoading={isLoading}
+          />
+        </div>
 
-      <div className="summary-cards">
-  {[
-    { label: 'Number of shared segments', value: '1,263' },
-    { label: 'Number of Make segments', value: '10' },
-    { label: 'Number of Model segments', value: '84' },
-    { label: 'Number of Model segments', value: '84' },
-    { label: 'Number of Model segments', value: '84' }
-  ].map(({ label, value }) => (
-    <div key={label} className="summary-card">
-      <div className="summary-label">{label}</div>
-      <div className="summary-value">{value}</div>
-    </div>
-  ))}
-</div>
-
-      <div className="top-section">
-        <ComposedChartWidget data={filtered(composedData)} isLoading={isLoading} />
-        <FeedList />
+        <div className="chart-grid grid-3">
+          <PieChartWidget data={pieData} isLoading={isLoading} />
+          <PieChartWidget data={pieData} isLoading={isLoading} />
+          <BubbleChart
+            visibleDates={visibleDates}
+            visibleMakes={visibleMakes}
+          />
+        </div>
       </div>
-     <div className="chart-grid grid-2">
-  <BarChartStageWidget
-    rawData={filtered(barData)}
-    visibleDates={visibleDates}
-    visibleMakes={visibleMakes}
-    isLoading={isLoading}
-  />
-  <TreemapChart
-    rawData={filtered(composedData)}
-    visibleDates={visibleDates}
-    visibleMakes={visibleMakes}
-    isLoading={isLoading}
-  />
-</div>
-
-<div className="chart-grid grid-3">
-  <PieChartWidget data={pieData} isLoading={isLoading} />
-  <PieChartWidget data={pieData} isLoading={isLoading} />
-  <BubbleChart
-    visibleDates={visibleDates}
-    visibleMakes={visibleMakes}
-
-  />
-</div>
-
-
-
-    </div>
+    </>
   );
 }
