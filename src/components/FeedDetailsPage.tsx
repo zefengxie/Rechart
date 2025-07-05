@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
-import "../App.css"; // 保留样式
+import CustomBarChart from "../components/somedata"; 
+import "../App.css";
 
 export default function FeedDetailsPage() {
   const { id } = useParams();
@@ -22,23 +22,23 @@ export default function FeedDetailsPage() {
       <section className="details-section">
         <h2 className="details-subtitle">Overview:</h2>
         <p>
-          The Bluey world campaign is targeting interstate audiences from NSW and Victoria who have shown intent to travel to Brisbane. Using rich media creatives, we tested and engaged audiences across parenting personas. Insights were based on weekly lead and sales lookbacks, giving us a richer understanding and strong market resonance.
+          The Bluey world campaign is targeting interstate audiences from NSW and Victoria...
         </p>
       </section>
 
       <section className="details-section">
         <h2 className="details-subtitle">Strong audience engagement with the creative:</h2>
-        <img src="/images.png" alt="Engagement Chart" className="details-chart" />
+        <CustomBarChart title="Engagement Over Time" dataKey="impressions" />
         <p>
-          We observed an average engagement rate of 61.7% with the creative. In NSW, the total reach was 23,045 and the engagement rate doubled to 61.0%.
+          We observed an average engagement rate of 61.7% with the creative...
         </p>
       </section>
 
       <section className="details-section">
         <h2 className="details-subtitle">Travel insights of the target audience:</h2>
-        <img src="/images.png" alt="Travel Insights" className="details-chart" />
+        <CustomBarChart title="Average Clicks" dataKey="clicks" />
         <p>
-          On average, the purchase window was 52.88 days for Victorian travelers to Brisbane and 43.81 days for NSW travelers.
+          On average, the purchase window was 52.88 days...
         </p>
       </section>
 
@@ -46,22 +46,17 @@ export default function FeedDetailsPage() {
         <h2 className="details-subtitle">
           Victorian travellers with kids are on average spending 1 more day than NSW travellers
         </h2>
-        <img src="/images.png" alt="Stay Duration" className="details-chart" />
+        <CustomBarChart title="number of value" dataKey="value" />
       </section>
 
       <section className="details-section">
         <h2 className="details-subtitle">
           On average, Victorian and NSW travellers are travelling with 1.63 kids
         </h2>
-        <img src="/images.png" alt="Kids Data" className="details-chart" />
+        <CustomBarChart title="Number of size" dataKey="size" />
       </section>
 
-      <section className="details-section">
-        <h2 className="details-subtitle">
-          Friday departures and Easter weekend are popular among Victorian and NSW travellers
-        </h2>
-        <img src="/images.png" alt="Departure Dates" className="details-chart" />
-      </section>
+     
     </div>
   );
 }

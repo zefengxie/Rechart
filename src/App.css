@@ -626,3 +626,19 @@
 .pie-chart-container {
   min-height: 260px; 
 }
+
+
+@media (max-width: 768px) {
+  .feed-box {
+    width: 100%;      
+    margin: 0;           
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .xaxis-label text {
+    display: none;
+  }
+}

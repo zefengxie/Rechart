@@ -7,7 +7,7 @@ import TreemapChart from "./components/TreemapChart";
 import BubbleChart from "./components/BubbleChart";
 import FeedList from "./components/FeedList";
 import FilterPanel from "./components/FilterPanel";
-import { composedData, barData } from "./Data/data";
+import { composedData, dummyData,barData } from "./Data/data";
 import { Loader, Center } from '@mantine/core';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -24,6 +24,7 @@ export default function DashboardLayout() {
       return updated;
     });
   };
+  
 
   const allMakes = useMemo(() => Array.from(new Set(composedData.map(d => d.make).filter(Boolean))), []);
   const [visibleMakes, setVisibleMakes] = useState(new Set(allMakes));
@@ -111,6 +112,19 @@ export default function DashboardLayout() {
     pdf.save("dashboard.pdf");
   };
 
+  const treemapData = useMemo(() => {
+  const grouped: Record<string, { name: string; size: number }> = {};
+  filtered(composedData).forEach((d) => {
+    const make = d.make || "Unknown";
+    if (!grouped[make]) {
+      grouped[make] = { name: make, size: 0 };
+    }
+    grouped[make].size += d.size || 0; 
+  });
+  return Object.values(grouped);
+}, [visibleDates, visibleMakes, startDateFilter, endDateFilter]);
+
+
   return (
     <>
       <div className="dashboard-header">
@@ -161,31 +175,75 @@ export default function DashboardLayout() {
         </div>
 
         <div className="top-section">
-          <ComposedChartWidget data={filtered(composedData)} isLoading={isLoading} />
+          <ComposedChartWidget 
+          title="Campaign Reach"
+          description="Comparing Impressions and Clicks"
+          data={filtered(composedData)}
+          isLoading={isLoading}
+          xKey="date"
+          bars={[{ key: "impressions", color: "#66bb6a", label: "Impressions" }]}
+          lines={[{ key: "clicks", color: "#82ca9d", label: "Clicks" }]}
+          leftYAxisLabel="Impressions"
+          rightYAxisLabel="Clicks" 
+           />
           <FeedList />
         </div>
 
         <div className="chart-grid grid-2">
           <BarChartStageWidget
-            rawData={filtered(barData)}
-            visibleDates={visibleDates}
-            visibleMakes={visibleMakes}
-            isLoading={isLoading}
-          />
+          rawData={filtered(barData)}
+          visibleDates={visibleDates}
+          visibleMakes={visibleMakes}
+          isLoading={isLoading}
+          groupBy="stage"
+          bars={[
+          { key: "groupA", color: "#26c6da" },
+          { key: "groupB", color: "#66bb6a" }
+          ]}
+          title="Audience Buyer Journey Stages"
+          description="Chart showing users across journey stages."
+          layout="vertical"
+          height={250}
+        />
           <TreemapChart
-            rawData={filtered(composedData)}
-            visibleDates={visibleDates}
-            visibleMakes={visibleMakes}
+            title="Vehicle Makes"
+            description="Larger box = more vehicles"
+            data={treemapData}
+            dataKey="size"
+            nameKey="name"
             isLoading={isLoading}
           />
         </div>
 
         <div className="chart-grid grid-3">
-          <PieChartWidget data={pieData} isLoading={isLoading} />
-          <PieChartWidget data={pieData} isLoading={isLoading} />
-          <BubbleChart
-            visibleDates={visibleDates}
-            visibleMakes={visibleMakes}
+          <PieChartWidget 
+          title="New vs Used Audiences"
+          description="Pie chart showing audience states"
+          data={pieData}
+          dataKey="value"
+          nameKey="name"
+          colors={["#26c6da", "#66bb6a"]}
+          isLoading={isLoading} 
+          />
+
+          <PieChartWidget 
+          title="New vs Used Audiences"
+          description="Pie chart showing audience states"
+          data={pieData}
+          dataKey="value"
+          nameKey="name"
+          colors={["#26c6da", "#66bb6a"]}
+          isLoading={isLoading} 
+          />
+
+
+          <BubbleChart 
+          data={dummyData}
+          xKey="x"                 
+          yKey="y"                     
+          zKey="z"                     
+          title="Brand Comparison"
+          description="X = Cost, Y = Engagement, Bubble size = Volume"
           />
         </div>
       </div>

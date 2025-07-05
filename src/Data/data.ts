@@ -578,3 +578,10 @@ export const barData = [
   { date: "2025-05-29", stage: "Discovery", groupA: 38, groupB: 33 },
   { date: "2025-05-30", stage: "Intender", groupA: 39, groupB: 34 }
 ];
+
+
+export const dummyData = [
+  { x: 20, y: 30, z: 200, name: "Toyota" },
+  { x: 40, y: 100, z: 260, name: "Ford" },
+  { x: 25, y: 90, z: 300, name: "Mazda" },
+];

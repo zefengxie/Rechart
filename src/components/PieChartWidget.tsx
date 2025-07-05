@@ -1,48 +1,63 @@
-// src/components/PieChartWidget.tsx
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Loader, Center } from "@mantine/core";
 
-interface PieChartWidgetProps {
-  data: { name: string; value: number }[];
+interface DataItem {
+  [key: string]: string | number;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  data: DataItem[];
+  dataKey: string;         // 数值字段
+  nameKey: string;         // 标签字段
+  colors?: string[];
   isLoading?: boolean;
 }
 
-const COLORS = ["#26c6da", "#66bb6a"];
-
-const PieChartWidget: React.FC<PieChartWidgetProps> = ({ data, isLoading = false }) => {
+const PieChartTemplate: React.FC<Props> = ({
+  title,
+  description,
+  data,
+  dataKey,
+  nameKey,
+  colors = ["#26c6da", "#66bb6a"],
+  isLoading = false
+}) => {
   return (
     <div className="chart-box pie-chart-container">
-      <h3 className="chart-title">New vs Used Audiences</h3>
-      <p className="chart-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <h3 className="chart-title">{title}</h3>
+      {description && <p className="chart-description">{description}</p>}
 
-
-        {isLoading ? (
-          <Center style={{ height: "100%" }}>
-            <Loader color="teal" size="xl" />
-          </Center>
-        ) : (
-          <ResponsiveContainer width="100%" height={260}>
-            <PieChart>
-              <Pie
-                data={data}
-                dataKey="value"
-                nameKey="state"
-                outerRadius={70}
-                label={({ name, value }) => `${name}: ${value}`}
-              >
-                {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-        )}
-      </div>
-
+      {isLoading ? (
+        <Center style={{ height: "100%" }}>
+          <Loader color="teal" size="xl" />
+        </Center>
+      ) : (
+        <ResponsiveContainer width="100%" height={260}>
+          <PieChart>
+            <Pie
+              data={data}
+              dataKey={dataKey}
+              nameKey={nameKey}
+              outerRadius={70}
+              label={(entry) =>
+                `${entry[nameKey as keyof typeof entry]}: ${entry[dataKey as keyof typeof entry]}`
+              }
+            >
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={colors[index % colors.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      )}
+    </div>
   );
 };
 
-export default PieChartWidget;
+export default PieChartTemplate;
