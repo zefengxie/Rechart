@@ -1,10 +1,3 @@
-
-
-
-
-
-
-/* === Layout & Grid === */
 .top-section {
   display: flex;
   flex-direction: row;
@@ -80,7 +73,7 @@
 }
 
 .dashboard-title {
-  color: #4ec59e;
+  color: #007472;
   font-size: 32px;
   font-weight: bold;
   margin: 0;
@@ -402,7 +395,7 @@
 
 
 .apply-button {
-  background-color: #4ec59e;
+  background-color: #13745A;
   color: white;
   padding: 6px 18px;
   border-radius: 18px;
@@ -567,6 +560,7 @@
   font-weight: 500;
   color: #444;
   text-align: right;
+  font-weight: bold; 
 }
 
 .feed-item-link {
@@ -641,4 +635,40 @@
   .xaxis-label text {
     display: none;
   }
+}
+
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 5vw;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .dashboard-menu-buttons {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .dashboard-menu-buttons button {
+    width: 80%;
+    max-width: 300px;
+    text-align: center; 
+    margin: 0.5rem auto; 
+    display: block;
+  }
+
 }
