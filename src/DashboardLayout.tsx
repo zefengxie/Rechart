@@ -10,6 +10,7 @@ import FilterPanel from "./components/FilterPanel";
 import { composedData, dummyData,barData } from "./Data/data";
 import { Loader, Center } from '@mantine/core';
 import html2canvas from 'html2canvas';
+
 import jsPDF from 'jspdf';
 
 export default function DashboardLayout() {
