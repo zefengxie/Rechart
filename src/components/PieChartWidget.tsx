@@ -1,6 +1,16 @@
 import React from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import { Loader, Center } from "@mantine/core";
+
+type ChartTheme = {
+  palette?: string[];
+  tooltipCursor?: string;
+};
+
+const defaultTheme: Required<ChartTheme> = {
+  palette: ["#26c6da", "#66bb6a", "#ffca28", "#ab47bc", "#42a5f5", "#ef5350"],
+  tooltipCursor: "rgba(0,0,0,0.04)",
+};
 
 interface DataItem {
   [key: string]: string | number;
@@ -10,21 +20,28 @@ interface Props {
   title: string;
   description?: string;
   data: DataItem[];
-  dataKey: string;         // 数值字段
-  nameKey: string;         // 标签字段
-  colors?: string[];
+  dataKey: string;         
+  nameKey: string;       
+  colors?: string[];       
   isLoading?: boolean;
+  height?: number;
+  theme?: ChartTheme;     
 }
 
-const PieChartTemplate: React.FC<Props> = ({
+const PieChartWidget: React.FC<Props> = ({
   title,
   description,
   data,
   dataKey,
   nameKey,
-  colors = ["#26c6da", "#66bb6a"],
-  isLoading = false
+  colors,
+  isLoading = false,
+  height = 260,
+  theme
 }) => {
+  const t = { ...defaultTheme, ...theme };
+  const palette = colors && colors.length > 0 ? colors : t.palette;
+
   return (
     <div className="chart-box pie-chart-container">
       <h3 className="chart-title">{title}</h3>
@@ -35,8 +52,10 @@ const PieChartTemplate: React.FC<Props> = ({
           <Loader color="teal" size="xl" />
         </Center>
       ) : (
-        <ResponsiveContainer width="100%" height={260}>
+        <ResponsiveContainer width="100%" height={height}>
           <PieChart>
+            <Tooltip />
+            <Legend />
             <Pie
               data={data}
               dataKey={dataKey}
@@ -46,11 +65,8 @@ const PieChartTemplate: React.FC<Props> = ({
                 `${entry[nameKey as keyof typeof entry]}: ${entry[dataKey as keyof typeof entry]}`
               }
             >
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={colors[index % colors.length]}
-                />
+              {data.map((_, index) => (
+                <Cell key={`cell-${index}`} fill={palette[index % palette.length]} />
               ))}
             </Pie>
           </PieChart>
@@ -60,4 +76,4 @@ const PieChartTemplate: React.FC<Props> = ({
   );
 };
 
-export default PieChartTemplate;
+export default PieChartWidget;

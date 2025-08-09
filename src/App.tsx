@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DashboardLayout from './DashboardLayout';
 import FeedDetailsPage from './components/FeedDetailsPage';
-import SegmentsPage from './pages/SegmentsPage'; // 刚才那份新建的页面
+import SegmentsPage from './pages/SegmentsPage'; 
 
 function App() {
   return (
